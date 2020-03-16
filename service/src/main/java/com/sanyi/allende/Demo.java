@@ -10,4 +10,5 @@ package com.sanyi.allende;
  */
 public class Demo {
     private String test = "git添加测试";
+    private String allende;
 }
