@@ -12,7 +12,7 @@ import java.util.Date;
  * @版本 1.0.0
  * @版权 老九学堂
  */
-public class GoodClassify {
+public class GoodClassifyDomain {
     /**
      * 商品分类编号
      */
