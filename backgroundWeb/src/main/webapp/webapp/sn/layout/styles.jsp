@@ -3,4 +3,5 @@
         <!-- 引入Bootstrap的样式 -->
         <link rel="stylesheet" href="<%=request.getContextPath() %>/static/lib/bootstrap/css/bootstrap.css">
         <!-- 引入Font Awesome字体图标的样式 -->
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/static/lib/fontawesome/css/all.css">
+<%--        <link rel="stylesheet" href="<%=request.getContextPath() %>/static/lib/fontawesome/css/all.css">--%>
+        <link rel="stylesheet" href="<%=request.getContextPath() %>/static/lib/fontAwesome4.7.0/css/font-awesome.min.css">

@@ -60,6 +60,17 @@
             width: 0%;
         }
 
+        /****头部菜单 控制按钮
+ *******************************************/
+        #header_nav_sn div:first-child a{
+            color: black;
+            font-weight: initial;
+        }
+
+        #header_nav_sn div:first-child a:hover{
+            color: #f5f5f5;
+        }
+
     </style>
 </head>
 <body>
@@ -67,7 +78,7 @@
     <div class="row h-100">
         <%--左侧导航条--%>
         <div class="col-1 p-0 h-100">
-            <div id="left_nav_sn" class="show-sn collapse show">
+            <div id="left_nav_sn" class="collapse show">
                 <ul class="nav navbar-dark bg-dark flex-column h-100 shadow-lg">
                     <a class="navbar-brand" href="#">Navbar</a>
                     <c:forEach items="${sessionScope.oneLevelMenu}" var="menu">
@@ -93,8 +104,15 @@
         <div class="col">
             <%--头部通用条--%>
             <div class="row bg-white justify-content-between shadow-lg position-relative" style="height: 8%" id="header_nav_sn">
-                <div class="col-3">
-                    <a href="#left_nav_sn" class="collapsed" data-toggle="collapse">按钮</a>
+                <div class="col-1">
+                    <div class="row align-items-center h-100 justify-content-start">
+                        <div class="col-2">
+                            <a href="#left_nav_sn"><i class="fa fa-outdent"></i></a>
+                        </div>
+                        <div class="col-2">
+                            <a href="#"><i class="fa fa-refresh"></i></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-3">
                     <div class="row h-100 justify-content-end align-items-center">
@@ -103,10 +121,10 @@
                     </div>
                 </div>
             </div>
-            <div class="row  position-relative" style="height: 91%">
+            <div class="row position-relative" style="height: 91%">
                 <c:if test="${!empty requestScope.twoLevelMenus}">
                     <%--左侧二级菜单导航条--%>
-                    <div class="col-1 p-0 show-sn" style="width: 100px;top: 0px;" id="left_second_nav_sn">
+                    <div class="col-1 p-0 shadow-sm" style="width: 100px;top: 0px;" id="left_second_nav_sn">
                         <c:if test="${!empty requestScope.twoLevelMenus}">
                             <ul class="nav navbar-light bg-white h-100 flex-column shadow-sm mt-1">
                                 <li class="navbar-text">
@@ -131,7 +149,7 @@
                     </div>
                 </c:if>
                 <%--主体网页--%>
-                <div class="col bg-light p-3 overflow-auto h-100 p-4" id="web-page-main-body">
+                <div class="col bg-light p-1 overflow-auto h-100 p-4" id="web-page-main-body">
                 </div>
             </div>
         </div>
