@@ -19,19 +19,35 @@ public class BackgroundMenuServiceImpl implements BackgroundMenuService {
     /**
      * 后台菜单Dao代理对象
      */
-    private static final BackGroundMenuDao BACK_GROUND_MENU_DAO = SqlSessionFactoryUits.getCurrentSqlSession().getMapper(BackGroundMenuDao.class);
+    private final BackGroundMenuDao BACK_GROUND_MENU_DAO = SqlSessionFactoryUits.getCurrentSqlSession().getMapper(BackGroundMenuDao.class);
 
     private BackgroundMenuServiceImpl(){};
 
     private static final class One{
+
+        private final  static ThreadLocal<BackgroundMenuServiceImpl> THREAD_LOCAL = new ThreadLocal<BackgroundMenuServiceImpl>();
+
         private final static BackgroundMenuServiceImpl BSI = new BackgroundMenuServiceImpl();
+
+        /**
+         * 获取后台菜单服务实现类
+         * @return
+         */
+        private static BackgroundMenuServiceImpl getBMSI(){
+            BackgroundMenuServiceImpl backgroundMenuService= THREAD_LOCAL.get();
+            if(backgroundMenuService == null){
+                backgroundMenuService = new BackgroundMenuServiceImpl();
+                THREAD_LOCAL.set(backgroundMenuService);
+            }
+            return  backgroundMenuService;
+        }
     }
 
     /**
      * 获取 后台菜单服务实现对象
      * @return 后台菜单服务实现对象
      */
-    public static synchronized BackgroundMenuServiceImpl newInstance() { return  One.BSI;}
+    public static synchronized BackgroundMenuServiceImpl newInstance() { return  One.getBMSI();}
 
     public List<BackgroundMenu> getBackgroundMenuByLevel(int level) {
         return BACK_GROUND_MENU_DAO.getBackgroundMenuByLevel(level);
