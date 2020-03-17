@@ -64,9 +64,44 @@ public interface BackgroundMenuService {
     int getDefaultChildMenuId(int menuId);
 
     /**
+     * 根据菜单Id 获取 默认 子级菜单
+     * @param menuId 菜单Id
+     * @return 子级菜单
+     */
+    BackgroundMenu getDefaultChildMenu(int menuId);
+
+    /**
      * 根据菜单Id 获取同级 菜单（属于同一个父级菜单）
      * @param menuId 菜单ID
      * @return 同级 菜单（属于同一个父级菜单）
      */
     List<BackgroundMenu> getSameLevelMenus(int menuId);
+
+    /**
+     * 根据菜单id 获得父级菜单
+     * @param menuId 子级菜单id
+     * @return 父级菜单
+     */
+    BackgroundMenu getParentMenu(int menuId);
+
+    /**
+     * 根据子级菜单id 获取父级菜单名称
+     * @param childMenuId  子级菜单id
+     * @return 父级菜单名称
+     */
+    String getParentMenuName(int childMenuId);
+
+    /**
+     * 根据菜单id 获取菜单信息
+     * @param menuId 菜单id
+     * @return 菜单信息
+     */
+    BackgroundMenu getMenu(int menuId);
+
+    /**
+     * 根据菜单id 获取菜单名称
+     * @param menuId 菜单id
+     * @return 菜单名称
+     */
+    String getMenuName(int menuId);
 }

@@ -29,7 +29,7 @@ public interface BackGroundMenuDao {
      * @param level 菜单级别
      * @return 菜单
      */
-    @SQL(value = "select pk_background_menu_id,pk_level_id_bg,background_menu_name,background_url,background_menu_font_icon,parent_id_background_menu,create_time,update_time\n" +
+    @SQL(value = "select background_menu_js_url,pk_background_menu_id,pk_level_id_bg,background_menu_name,background_url,background_menu_font_icon,parent_id_background_menu,create_time,update_time\n" +
             "from background_menu where pk_level_id_bg = #{menu_level};",resultType = BackgroundMenu.class,type = SqlType.SELECT)
     List<BackgroundMenu> getBackgroundMenuByLevel(@Param("menu_level") int level);
 
@@ -38,7 +38,7 @@ public interface BackGroundMenuDao {
      * @param parentId  父级菜单编号
      * @return 子级菜单
      */
-    @SQL(value = "select pk_background_menu_id,pk_level_id_bg,background_menu_name,background_url,background_menu_font_icon,parent_id_background_menu,create_time,update_time\n" +
+    @SQL(value = "select background_menu_js_url,pk_background_menu_id,pk_level_id_bg,background_menu_name,background_url,background_menu_font_icon,parent_id_background_menu,create_time,update_time\n" +
             "from background_menu where parent_id_background_menu = #{parent_id};",resultType = BackgroundMenu.class,type = SqlType.SELECT)
     List<BackgroundMenu> getBackgroundMenuByParentId(@Param("parent_id") int parentId);
 
@@ -69,22 +69,53 @@ public interface BackGroundMenuDao {
     ,resultType = Long.class,type = SqlType.SELECT)
     Long getParentId(@Param("id") int menuId);
 
+
+
     /**
      * 根据 菜单id 获取 默认子级菜单id
      * @param menuId 菜单id
      * @return 默认子级菜单id
      */
-    @SQL(value = "select pk_background_menu_id  from background_menu where parent_id_background_menu = #{id} limit 1;"
+    @SQL(value = "select pk_background_menu_id from background_menu where parent_id_background_menu = #{id} limit 1;"
     ,resultType = Long.class,type = SqlType.SELECT)
     Long getDefaultChildId(@Param("id") int menuId);
+
+    /**
+     * 根据 菜单id 获取 默认子级菜单
+     * @param menuId 菜单id
+     * @return 默认子级菜单
+     */
+    @SQL(value = "select background_menu_js_url,pk_background_menu_id,pk_level_id_bg,background_menu_name,background_url,background_menu_font_icon,parent_id_background_menu,create_time,update_time from background_menu where parent_id_background_menu = #{id} limit 1;"
+    ,resultType = BackgroundMenu.class,type = SqlType.SELECT)
+    BackgroundMenu getDefaultChildMenu(@Param("id") int menuId);
 
     /**
      * 根据 菜单id 获取 同级子级菜单
      * @param menuId 菜单id
      * @return 同级子级菜单
      */
-    @SQL(value = "select pk_background_menu_id,pk_level_id_bg,background_menu_name,background_url,background_menu_font_icon,parent_id_background_menu,create_time,update_time\n" +
+    @SQL(value = "select background_menu_js_url,pk_background_menu_id,pk_level_id_bg,background_menu_name,background_url,background_menu_font_icon,parent_id_background_menu,create_time,update_time\n" +
             "from background_menu where parent_id_background_menu = (select parent_id_background_menu from background_menu where pk_background_menu_id = #{id});"
     ,resultType = BackgroundMenu.class ,type = SqlType.SELECT)
     List<BackgroundMenu> getSameLevelMenus(@Param("id") int menuId);
+
+    /**
+     * 根据子级菜单 获取 父级菜单
+     * @param childMenuId 子级菜单编号
+     * @return 父级菜单
+     */
+    @SQL(value = "select background_menu_js_url,pk_background_menu_id,pk_level_id_bg,background_menu_name,background_url,background_menu_font_icon,parent_id_background_menu,create_time,update_time from background_menu\n" +
+            "where pk_background_menu_id = (select parent_id_background_menu from background_menu where pk_background_menu_id = #{id});"
+    ,resultType = BackgroundMenu.class,type = SqlType.SELECT)
+    BackgroundMenu getParentMenu(@Param("id") int childMenuId);
+
+    /**
+     * 根据菜单id 获取 菜单信息
+     * @param menuId  菜单id
+     * @return  菜单信息
+     */
+    @SQL(value = "select pk_background_menu_id,pk_level_id_bg,background_menu_name,background_url,background_menu_font_icon,background_menu_js_url,parent_id_background_menu,create_time,update_time from background_menu where pk_background_menu_id= #{id};"
+    ,resultType = BackgroundMenu.class,type = SqlType.SELECT)
+    BackgroundMenu getMenu(@Param("id") int menuId);
 }
+

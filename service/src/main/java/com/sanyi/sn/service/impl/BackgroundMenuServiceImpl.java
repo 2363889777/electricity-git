@@ -92,4 +92,24 @@ public class BackgroundMenuServiceImpl implements BackgroundMenuService {
     public List<BackgroundMenu> getSameLevelMenus(int menuId) {
         return BACK_GROUND_MENU_DAO.getSameLevelMenus(menuId);
     }
+
+    public BackgroundMenu getParentMenu(int menuId) {
+        return BACK_GROUND_MENU_DAO.getParentMenu(menuId);
+    }
+
+    public String getParentMenuName(int childMenuId) {
+        return getParentMenu(childMenuId).getName();
+    }
+
+    public BackgroundMenu getMenu(int menuId) {
+        return BACK_GROUND_MENU_DAO.getMenu(menuId);
+    }
+
+    public String getMenuName(int menuId) {
+        return getMenu(menuId).getName();
+    }
+
+    public BackgroundMenu getDefaultChildMenu(int menuId) {
+        return BACK_GROUND_MENU_DAO.getDefaultChildMenu(menuId);
+    }
 }

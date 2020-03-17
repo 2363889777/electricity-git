@@ -21,36 +21,31 @@ public class BackgroundMenuServiceTest {
         backgroundMenuService = BackgroundMenuServiceImpl.newInstance();
     }
 
+    /**
+     * 测试  backgroundMenuService.getBackgroundMenuByLevel(1)
+     */
     @Test
     public void getBackgroundMenuByLevel() {
         System.out.println(backgroundMenuService.getBackgroundMenuByLevel(1));
     }
 
     @Test
-    public void getBackgroundMenuByParent() {
+    public void getParentMenu() {
+        System.out.println(backgroundMenuService.getParentMenu(9));
     }
 
     @Test
-    public void testGetBackgroundMenuByParent() {
+    public void getParentMenuName() {
+        System.out.println(backgroundMenuService.getParentMenuName(9));
     }
 
     @Test
-    public void getBackgroundMenuId() {
+    public void getMenu() {
+        System.out.println(backgroundMenuService.getMenu(1));
     }
 
     @Test
-    public void getLevel() {
-    }
-
-    @Test
-    public void getParentId() {
-    }
-
-    @Test
-    public void getDefaultChildMenuId() {
-    }
-
-    @Test
-    public void getSameLevelMenus() {
+    public void getDefaultChildMenu() {
+        System.out.println(backgroundMenuService.getDefaultChildMenu(2));
     }
 }

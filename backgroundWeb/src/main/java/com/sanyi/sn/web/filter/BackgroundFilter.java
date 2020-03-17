@@ -42,17 +42,28 @@ public class BackgroundFilter implements Filter {
             List<BackgroundMenu> twoLevelMenus = backgroundMenuService.getBackgroundMenuByParent(menuId);
             //设置进req中
             request.setAttribute("twoLevelMenus",twoLevelMenus);
+            //设置当前页面
+            request.setAttribute("currentMenu",backgroundMenuService.getMenu(menuId));
         }else {
             //判断点击的是一级菜单还是二级菜单
             int menuLevel = backgroundMenuService.getLevel(menuId);
             if(menuLevel == 1){
                 List<BackgroundMenu> twoLevelMenus = backgroundMenuService.getBackgroundMenuByParent(menuId);
+
                 //设置进req中
                 request.setAttribute("twoLevelMenus",twoLevelMenus);
+                //设置二级菜单的父菜单名称
+                request.setAttribute("parentMenuName",backgroundMenuService.getMenuName(menuId));
+                //设置当前页面
+                request.setAttribute("currentMenu",backgroundMenuService.getDefaultChildMenu(menuId));
             }else{
                 List<BackgroundMenu> twoLevelMenus = backgroundMenuService.getSameLevelMenus(menuId);
                 //设置进req中
                 request.setAttribute("twoLevelMenus",twoLevelMenus);
+                //设置二级菜单的父菜单名称
+                request.setAttribute("parentMenuName",backgroundMenuService.getParentMenuName(menuId));
+                //设置当前页面
+                request.setAttribute("currentMenu",backgroundMenuService.getMenu(menuId));
             }
         }
         //2. 设置激活

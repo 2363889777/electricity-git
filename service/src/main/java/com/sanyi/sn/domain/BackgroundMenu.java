@@ -61,6 +61,12 @@ public class BackgroundMenu {
      */
     @ColName("update_time")
     private Date updateTime;
+//    --    background_menu_js_url varchar(255) comment '后台菜单主页面js文件',
+    /**
+     * 后台菜单主页面js文件
+     */
+    @ColName("background_menu_js_url")
+    private String jsUrl;
 
     @Override
     public String toString() {
@@ -73,7 +79,16 @@ public class BackgroundMenu {
                 ", parentId=" + parentId +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
+                ", jsUrl='" + jsUrl + '\'' +
                 '}';
+    }
+
+    public String getJsUrl() {
+        return jsUrl;
+    }
+
+    public void setJsUrl(String jsUrl) {
+        this.jsUrl = jsUrl;
     }
 
     public int getId() {
