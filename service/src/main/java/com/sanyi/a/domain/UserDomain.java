@@ -1,5 +1,7 @@
 package com.sanyi.a.domain;
 
+import com.xuetang9.jdbc.frame.annotation.ColName;
+
 import java.util.Date;
 /**
  *
@@ -12,10 +14,15 @@ import java.util.Date;
  *
  */
 public class UserDomain {
+    @ColName("pk_user_id")
     private int pk_user_id;
+    @ColName("pk_user_name")
     private String pk_user_name;
+    @ColName("user_password")
     private String user_password;
+    @ColName("create_time")
     private  Date create_time;
+    @ColName("update_time")
     private Date update_time;
 
     public int getPk_user_id() {
