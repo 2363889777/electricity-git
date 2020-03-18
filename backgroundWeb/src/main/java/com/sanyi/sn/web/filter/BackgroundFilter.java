@@ -32,6 +32,11 @@ public class BackgroundFilter implements Filter {
     }
 
     public void setActive(ServletRequest request, ServletResponse response){
+        List backgroundMenus = (List)((HttpServletRequest)request).getSession().getAttribute("oneLevelMenu");
+        if(backgroundMenus == null || backgroundMenus.size() == 0){
+            BackgroundMenuService backgroundMenuService = BackgroundMenuServiceImpl.newInstance();
+            ((HttpServletRequest)request).getSession().setAttribute("oneLevelMenu",backgroundMenuService.getBackgroundMenuByLevel(1));
+        }
         //强转类型
         HttpServletRequest req = (HttpServletRequest)request;
         //1. 根据获取二级菜单
