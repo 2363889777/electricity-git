@@ -43,7 +43,7 @@
     </div>
 </div>
 <div class="copyright">
-    <p>Copyright &copy; 2020.Company name All rights reserved.<a target="_blank" href="http://www.cssmoban.com/"></a> - More Templates</p>
+    <p>Copyright &copy; 2020.Company name All rights reserved. - More Templates</p>
 </div>
 
 <%@include file="/webapp/c/layout_c/scripts.jsp" %>
