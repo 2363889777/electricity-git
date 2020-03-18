@@ -38,6 +38,7 @@
  *******************************************/
         #left_second_nav_sn .nav-link{
             color: black;
+            font-size: 13px;
         }
         #left_second_nav_sn .nav-link.active{
             background: #f5f5f5;
