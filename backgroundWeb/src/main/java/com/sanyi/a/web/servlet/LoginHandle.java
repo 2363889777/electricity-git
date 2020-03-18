@@ -28,6 +28,10 @@ public class LoginHandle extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+<<<<<<< Updated upstream
+=======
+        System.out.println("开始处理登录请求");
+>>>>>>> Stashed changes
         //创建业务处理对象
         LoginService loginService = new LoginServiceImpl();
 
@@ -41,18 +45,30 @@ public class LoginHandle extends HttpServlet {
         if (!(nameResult&&passResult)){
             req.setAttribute("error","账号和密码不能为空");
             //错误 转发到登录页面
+<<<<<<< Updated upstream
             req.getRequestDispatcher("").forward(req,resp);
+=======
+            req.getRequestDispatcher("/login.html").forward(req,resp);
+>>>>>>> Stashed changes
         }
 
         //验证用户名和密码是否匹配
        boolean loginResult = loginService.loginCheck(name,pass);
         if(loginResult){
             //正确 重定向到主页面
+<<<<<<< Updated upstream
             resp.sendRedirect("");
         }else {
             req.setAttribute("error","账号或密码错误");
             //错误 转发到登录页面
             req.getRequestDispatcher("").forward(req,resp);
+=======
+            resp.sendRedirect("/login.html");
+        }else {
+            req.setAttribute("error","账号或密码错误");
+            //错误 转发到登录页面
+            req.getRequestDispatcher("/login.html").forward(req,resp);
+>>>>>>> Stashed changes
         }
     }
 }
