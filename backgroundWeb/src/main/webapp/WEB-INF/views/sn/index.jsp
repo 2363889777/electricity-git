@@ -118,7 +118,7 @@
                 <div class="col-3">
                     <div class="row h-100 justify-content-end align-items-center">
                         <div class="col-6 text-center text-justify"><span class="align-middle">欢迎你，admin</span></div>
-                        <div class="col-3 text-center text-justify align-middle"><i class="fa fa-sign-out-alt"></i>退出</div>
+                        <div class="col-3 text-center text-justify align-middle"><i class="fa fa-power-off"></i>退出</div>
                     </div>
                 </div>
             </div>

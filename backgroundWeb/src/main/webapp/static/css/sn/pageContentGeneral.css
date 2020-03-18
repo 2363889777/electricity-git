@@ -1,7 +1,7 @@
 /*通用页面内容样式*/
 /****通用页面标题
  *******************************************/
-.pageContent-title-sn{
+.order-sn .pageContent-title-sn{
     /*位置设置/测试边框*/
     position: relative;
     /*显示和宽高设置*/
@@ -17,7 +17,7 @@
     /*动画特效*/
 }
 /*前面的蓝色条*/
-.pageContent-title-sn::before {
+.order-sn .pageContent-title-sn::before {
     content: '';
     position: absolute;
     width: 4px;
@@ -28,7 +28,7 @@
 }
 /****通用页面主体筛选，操作
  *******************************************/
-.pageContent-body-sn .pageContent-body-header-sn .btn{
+.order-sn .pageContent-body-sn .pageContent-body-header-sn .btn{
     /*位置设置/测试边框*/
     /*显示和宽高设置*/
     /*样式设置*/
@@ -40,16 +40,74 @@
 }
 /****显示订单列表 表头样式
  *******************************************/
-#order-list-table-sn{
-    background: red;
+.order-sn #order-list-table-sn tr{
+    width: 100%;
+    border: 1px solid #ddd;
 }
-#order-list-table-sn th{
+.order-sn #order-list-table-sn th{
     /*位置设置/测试边框*/
     /*显示和宽高设置*/
     /*样式设置*/
     /*盒子模型的属性*/
     /*文本字体*/
+    line-height: 35px;
+    text-align: center;
     font-size: 14px;
     font-weight: 700;
+    /*动画特效*/
+}
+/****显示订单列表 表体样式
+ *******************************************/
+/*表格与表格之间的间隙*/
+.order-sn #order-list-table-sn .interval{
+    width: 100%;
+    border: none;
+    height: 15px;
+}
+/*订单头*/
+.order-sn #order-list-table-sn .order-header-sn{
+    /*位置设置/测试边框*/
+    /*显示和宽高设置*/
+    width: 100%;
+    /*样式设置*/
+    /*盒子模型的属性*/
+    /*文本字体*/
+    line-height: 34px;
+    /*动画特效*/
+}
+.order-sn #order-list-table-sn .order-header-sn td{
+    /*位置设置/测试边框*/
+    /*显示和宽高设置*/
+    /*样式设置*/
+    /*盒子模型的属性*/
+    /*文本字体*/
+    /*动画特效*/
+}
+.order-sn #order-list-table-sn .order-header-sn span{
+    /*位置设置/测试边框*/
+    /*显示和宽高设置*/
+    /*样式设置*/
+    /*盒子模型的属性*/
+    margin-left: 5px;
+    margin-right: 20px;
+    /*文本字体*/
+    font-size: 13px;
+    /*动画特效*/
+}
+/*订单主体*/
+.order-sn #order-list-table-sn .order-body-sn{
+    border-right: none;
+    border-top: none;
+}
+.order-sn #order-list-table-sn .order-body-sn td{
+    /*位置设置/测试边框*/
+    /*显示和宽高设置*/
+    border-right: 1px solid #ddd;
+    /*样式设置*/
+    /*盒子模型的属性*/
+    /*文本字体*/
+    text-align: center;
+    vertical-align: middle;
+    font-size: 13px;
     /*动画特效*/
 }
