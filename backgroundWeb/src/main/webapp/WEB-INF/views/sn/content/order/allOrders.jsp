@@ -64,11 +64,32 @@
                                     </div>
                                 </div>
                             </form>
-
                     </div>
                 </div>
                 <%--主体数据显示区域--%>
-                <div class="row"></div>
+                <div class="row">
+                    <table class="col" id="order-list-table-sn">
+                            <thead>
+                            <tr class="row">
+                                <th class="col-3">商品信息</th>
+                                <th class="col-1">单价/数量</th>
+                                <th class="col-2">实付款</th>
+                                <th class="col-1">买家</th>
+                                <th class="col-1">支付方式</th>
+                                <th class="col-1">配送方式</th>
+                                <th class="col-2">交易状态</th>
+                                <th class="col-1">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr></tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                            <tfoot></tfoot>
+                        </table>
+                </div>
             </div>
         </div>
     </div>
