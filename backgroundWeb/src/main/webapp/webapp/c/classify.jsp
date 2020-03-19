@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: chen
-  Date: 2020/3/18
-  Time: 16:07
+  Date: 2020/3/19
+  Time: 19:05
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -27,36 +27,25 @@
                 <%--主体网页--%>
                 <div class="col">
                     <div class="container">
-                        <h4>出售中的商品</h4>
-                        <a href="">新增</a>
+                        <h4>商品分类</h4>
+                        <a href="classify_add_c.jsp">新增</a>
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>商品ID</th>
-                                <th>商品图片</th>
-                                <th>商品名称</th>
-                                <th>商品分类	</th>
-                                <th>实际销量</th>
-                                <th>商品排序</th>
-                                <th>商品状态</th>
-                                <th>添加时间</th>
+                                <th>分类ID</th>
+                                <th>分类名称</th>
+                                <th>分类排序</th>
+                                <th>添加时间	</th>
                                 <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <td>10001</td>
-                                <td></td>
-                                <td>Apple iPhone X移动联通4G手机</td>
-                                <td>Iphone</td>
-                                <td>10</td>
-                                <td>20</td>
-                                <td>上架</td>
+                                <td>手机数码</td>
+                                <td>管理员</td>
                                 <td>2018-06-25 19:32:28</td>
-                                <td>
-                                    <button>编辑</button>
-                                    <button>删除</button>
-                                </td>
+                                <td></td>
                             </tr>
                             </tbody>
                         </table>
