@@ -25,7 +25,7 @@ public class BackgroundMenuServiceImpl implements BackgroundMenuService {
 
     private static final class One{
 
-        private final  static ThreadLocal<BackgroundMenuServiceImpl> THREAD_LOCAL = new ThreadLocal<BackgroundMenuServiceImpl>();
+        private final static ThreadLocal<BackgroundMenuServiceImpl> THREAD_LOCAL = new ThreadLocal<BackgroundMenuServiceImpl>();
 
         private final static BackgroundMenuServiceImpl BSI = new BackgroundMenuServiceImpl();
 
@@ -47,7 +47,7 @@ public class BackgroundMenuServiceImpl implements BackgroundMenuService {
      * 获取 后台菜单服务实现对象
      * @return 后台菜单服务实现对象
      */
-    public static synchronized BackgroundMenuServiceImpl newInstance() { return  One.getBMSI();}
+    public static synchronized BackgroundMenuServiceImpl newInstance() { return  new BackgroundMenuServiceImpl();}
 
     public List<BackgroundMenu> getBackgroundMenuByLevel(int level) {
         return BACK_GROUND_MENU_DAO.getBackgroundMenuByLevel(level);
