@@ -1,5 +1,7 @@
 package com.sanyi.sn.web.filter;
 
+import com.xuetang9.jdbc.frame.factory.SqlSessionFactoryUits;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
@@ -24,7 +26,7 @@ public class AllFilter implements Filter {
         //放开请求
             chain.doFilter(request,response);
 //        //关闭连接
-//        SqlSessionFactoryUits.closeCurrentSession();
+        SqlSessionFactoryUits.closeCurrentSession();
     }
 
     @Override

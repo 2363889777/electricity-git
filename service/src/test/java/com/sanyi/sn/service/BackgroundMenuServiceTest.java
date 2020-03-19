@@ -4,8 +4,6 @@ import com.sanyi.sn.service.impl.BackgroundMenuServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * @author 十年
  * @function
@@ -47,5 +45,10 @@ public class BackgroundMenuServiceTest {
     @Test
     public void getDefaultChildMenu() {
         System.out.println(backgroundMenuService.getDefaultChildMenu(2));
+    }
+
+    @Test
+    public void getMenuLevel() {
+        System.out.println(backgroundMenuService.getBackgroundMenuByLevel(1));
     }
 }
