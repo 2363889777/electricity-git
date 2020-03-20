@@ -5,8 +5,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * @author 十年
  * @function
@@ -35,7 +33,9 @@ public class GoodDaoTest {
 
     @Test
     public void insertGoodMarketing() {
-        System.out.println(goodDao.insertGoodMarketing(1,3));
+        System.out.println(goodDao.insertGoodMarketing(1,1));
+        System.out.println(Integer.parseInt(goodDao.getRecentlyId().toString()));
+        SqlSessionFactoryUits.commit();
     }
 
     @Test
@@ -67,5 +67,12 @@ public class GoodDaoTest {
     @Test
     public void getSimpleGoodVos() {
         System.out.println(goodDao.getSimpleGoodVos(0,6));
+    }
+
+    @Test
+    public void getGoodImgTypeId() {
+        System.out.println(goodDao.getGoodImgTypeId("商品标题链接图片"));
+        System.out.println(goodDao.getGoodImgTypeId("商品展示内容图片"));
+        System.out.println(goodDao.getGoodImgTypeId("商品详细信息图片"));
     }
 }

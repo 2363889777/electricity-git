@@ -5,6 +5,7 @@ import com.xuetang9.jdbc.frame.annotation.Param;
 import com.xuetang9.jdbc.frame.annotation.SQL;
 import com.xuetang9.jdbc.frame.annotation.SqlType;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -108,4 +109,19 @@ public interface GoodDao {
             "limit #{startNum},#{endNum};",resultType = GoodVo.class,type = SqlType.SELECT)
     List<GoodVo> getSimpleGoodVos(@Param("startNum") int startNum,@Param("endNum") int endNum);
 
+    /**
+     * 获取最近影响的行数
+     * @return
+     */
+    @SQL(value = "select @@identity;",resultType = int.class,type = SqlType.SELECT)
+    BigInteger getRecentlyId();
+
+    /**
+     * 根据图片类型名称 返回相应的行数
+     * @param goodImgTypeName  图片类型名称
+     * @return 相应的行数
+     */
+    @SQL(value = "select pk_good_type_id\n" +
+            "from good_img_type where good_img_type_name = #{goodImgName};",resultType = Long.class,type = SqlType.SELECT)
+    Long getGoodImgTypeId(@Param("goodImgName") String goodImgTypeName);
 }
