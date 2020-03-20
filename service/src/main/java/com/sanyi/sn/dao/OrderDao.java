@@ -32,6 +32,7 @@ public interface OrderDao {
             "od.order_distribution_name,\n" +
             "g.good_name,g.pk_good_id,\n" +
             "gs.good_color_name,\n" +
+            "gsi.good_size_name,\n" +
             "gi.good_img_name\n" +
             "from order_form_table o\n" +
             "inner join user u on o.pk_user_id = u.pk_user_id\n" +
@@ -42,6 +43,7 @@ public interface OrderDao {
             "inner join method_of_payment m on m.pk_method_of_payment = o.pk_method_of_payment\n" +
             "inner join order_distribution od on od.pk_order_distribution_id = o.pk_order_distribution_id\n" +
             "inner join good_img gi on gi.pk_good_id = g.pk_good_id\n" +
+            "inner join good_size gsi on gsi.pk_good_size_id = gs.pk_good_size_id\n" +
             "where gi.pk_good_type_id = 1\n" +
             "limit #{startNum},#{endNum};",resultType = SimpleOrderMessageVo.class,type = SqlType.SELECT)
     List<SimpleOrderMessageVo> getSimpleOrderMessage(@Param("startNum") int startNum, @Param("endNum") int endNum);
@@ -63,6 +65,7 @@ public interface OrderDao {
             "od.order_distribution_name,\n" +
             "g.good_name,g.pk_good_id,\n" +
             "gs.good_color_name,\n" +
+            "gsi.good_size_name,\n" +
             "gi.good_img_name\n" +
             "from order_form_table o\n" +
             "inner join user u on o.pk_user_id = u.pk_user_id\n" +
@@ -73,6 +76,7 @@ public interface OrderDao {
             "inner join method_of_payment m on m.pk_method_of_payment = o.pk_method_of_payment\n" +
             "inner join order_distribution od on od.pk_order_distribution_id = o.pk_order_distribution_id\n" +
             "inner join good_img gi on gi.pk_good_id = g.pk_good_id\n" +
+            "inner join good_size gsi on gsi.pk_good_size_id = gs.pk_good_size_id\n" +
             "where gi.pk_good_type_id = 1 and o.pk_order_form_state_id = #{orderState}\n" +
             "limit #{startNum},#{endNum};",resultType = SimpleOrderMessageVo.class,type = SqlType.SELECT)
     List<SimpleOrderMessageVo> getSimpleOrderMessage(@Param("startNum") int startNum, @Param("endNum") int endNum, @Param("orderState") int orderState);
@@ -86,5 +90,42 @@ public interface OrderDao {
     ,resultType = OrderState.class,type = SqlType.SELECT)
     OrderState getOrderState(@Param("stateName") String name);
 
+    /**
+     * 获取满足条件 全部订单的数量
+     * @return 满足条件 全部订单的数量
+     */
+    @SQL(value = "select count(o.pk_order_form_id)\n" +
+            "from order_form_table o\n" +
+            "inner join user u on o.pk_user_id = u.pk_user_id\n" +
+            "inner join order_form_good_information og on o.pk_order_form_id = og.pk_order_form_id\n" +
+            "inner join order_form_state os on os.pk_order_form_state_id = o.pk_order_form_state_id\n" +
+            "inner join good_specification_information gs on og.pk_good_specification_id = gs.pk_good_specification_id\n" +
+            "inner join good g on g.pk_good_id = gs.pk_good_id\n" +
+            "inner join method_of_payment m on m.pk_method_of_payment = o.pk_method_of_payment\n" +
+            "inner join order_distribution od on od.pk_order_distribution_id = o.pk_order_distribution_id\n" +
+            "inner join good_img gi on gi.pk_good_id = g.pk_good_id\n" +
+            "inner join good_size gsi on gsi.pk_good_size_id = gs.pk_good_size_id\n" +
+            "where gi.pk_good_type_id = 1",resultType = Long.class,type = SqlType.SELECT)
+    Long getMatchOrderNum();
+
+    /**
+     * 获取满足条件 符合订单状态的数量
+     * @param orderState 订单状态
+     * @return 符合订单状态的数量
+     */
+    @SQL(value = "select \n" +
+            "count(o.pk_order_form_id)\n" +
+            "from order_form_table o\n" +
+            "inner join user u on o.pk_user_id = u.pk_user_id\n" +
+            "inner join order_form_good_information og on o.pk_order_form_id = og.pk_order_form_id\n" +
+            "inner join order_form_state os on os.pk_order_form_state_id = o.pk_order_form_state_id\n" +
+            "inner join good_specification_information gs on og.pk_good_specification_id = gs.pk_good_specification_id\n" +
+            "inner join good g on g.pk_good_id = gs.pk_good_id\n" +
+            "inner join method_of_payment m on m.pk_method_of_payment = o.pk_method_of_payment\n" +
+            "inner join order_distribution od on od.pk_order_distribution_id = o.pk_order_distribution_id\n" +
+            "inner join good_img gi on gi.pk_good_id = g.pk_good_id\n" +
+            "inner join good_size gsi on gsi.pk_good_size_id = gs.pk_good_size_id\n" +
+            "where gi.pk_good_type_id = 1 and o.pk_order_form_state_id = #{orderState}",resultType = Long.class,type = SqlType.SELECT)
+    Long getMatchOrderNum(@Param("orderState") int orderState);
 
 }

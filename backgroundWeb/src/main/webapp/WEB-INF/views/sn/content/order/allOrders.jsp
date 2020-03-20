@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>所有订单</title>
@@ -90,90 +91,82 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="interval"></tr>
-                        <tr class="order-header-sn">
-                            <td colspan="8">
-                                <span>2018-08-02 17:43:39</span>
-                                <span>订单号：2018080298545157</span>
-                            </td>
-                        </tr>
-                        <tr class="order-body-sn">
-                            <td>
-                                <div class="media">
-                                    <img class="mr-3"
-                                         src="${pageContext.request.contextPath}/static/img/sn/goodtest.jpg"
-                                         alt="Generic placeholder image">
-                                    <div class="media-body">
-                                        <h5 class="mt-0">Media heading</h5>
+                        <c:forEach items="${requestScope.orders}" var="order">
+                            <tr class="interval"></tr>
+                            <tr class="order-header-sn">
+                                <td colspan="8">
+                                    <span>${order.createTime}</span>
+                                    <span>订单号：${order.orderNumber}</span>
+                                </td>
+                            </tr>
+                            <tr class="order-body-sn">
+                                <td>
+                                    <div class="media">
+                                        <img class="mr-3"
+                                             src="${pageContext.request.contextPath}/static/img/sn/good${order.goodId}/${order.goodTitleImg}"
+                                             alt="Generic placeholder image"
+                                        width="75px" height="75px">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">${order.goodName}</h5>
+                                            <span>颜色：${order.goodColor}</span>
+                                            <span>型号：${order.goodSize}</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td>
-                                <span>￥1.00</span><br>
-                                <span>x1</span>
-                            </td>
-                            <td>
-                                <span>￥1.00</span><br>
-                                <span>(含运费：￥0.00)</span>
-                            </td>
-                            <td><span>下***己</span><br><span>(用户id：10226)</span></td>
-                            <td><span class="bg-primary text-white pl-1 pr-1">微信支付</span></td>
-                            <td><span class="bg-primary text-white pl-1 pr-1">快递配送</span></td>
-                            <td>
-                                <div class="mt-3 mb-3">
-                                    <p><span>付款状态：</span><span class="bg-success  m-1 pl-1 pr-1 text-white">已付款</span>
-                                    </p>
-                                    <p><span>发货状态：</span><span class="bg-success  m-1 pl-1 pr-1 text-white">已发货</span>
-                                    </p>
-                                    <p><span>收货状态：</span><span class="bg-success m-1 pl-1 pr-1 text-white">已收货</span>
-                                    </p>
-                                </div>
-                            </td>
-                            <td>
-                                <button class="btn-outline-success btn p-1" style="font-size: 13px">订单详情</button>
-                            </td>
-                        </tr>
-
-                        <tr class="interval"></tr>
-                        <tr class="order-header-sn">
-                            <td colspan="8">
-                                <span>2018-08-02 17:43:39</span>
-                                <span>订单号：2018080298545157</span>
-                            </td>
-                        </tr>
-                        <tr class="order-body-sn">
-                            <td>
-                                <div class="media">
-                                    <img class="mr-3"
-                                         src="${pageContext.request.contextPath}/static/img/sn/goodtest.jpg"
-                                         alt="Generic placeholder image">
-                                    <div class="media-body">
-                                        <h5 class="mt-0">Media heading</h5>
+                                </td>
+                                <td>
+                                    <span>￥${order.goodPrice}</span><br>
+                                    <span>x${order.orderGoodNumber}</span>
+                                </td>
+                                <td>
+                                    <span>￥${order.goodPrice}</span><br>
+                                    <span class="text-secondary">(含运费：￥${order.orderFreight})</span>
+                                </td>
+                                <td><span>${order.userName}</span><br><span class="text-secondary">(用户id：${order.userId})</span></td>
+                                <td><span class="bg-primary text-white pl-1 pr-1">${order.paymentName}</span></td>
+                                <td><span class="bg-primary text-white pl-1 pr-1">${order.orderDistribution}</span></td>
+                                <td>
+                                    <div class="mt-3 mb-3">
+                                        <c:choose>
+                                            <c:when test="${order.orderStateName=='待付款'}">
+                                                <p><span>付款状态：</span><span class="bg-secondary  m-1 pl-1 pr-1 text-white">待付款</span>
+                                                </p>
+                                                <p><span>发货状态：</span><span class="bg-secondary  m-1 pl-1 pr-1 text-white">待发货</span>
+                                                </p>
+                                                <p><span>收货状态：</span><span class="bg-secondary m-1 pl-1 pr-1 text-white">待收货</span>
+                                                </p>
+                                            </c:when>
+                                            <c:when test="${order.orderStateName=='待发货'}">
+                                                <p><span>付款状态：</span><span class="bg-success  m-1 pl-1 pr-1 text-white">已付款</span>
+                                                </p>
+                                                <p><span>发货状态：</span><span class="bg-secondary  m-1 pl-1 pr-1 text-white">待发货</span>
+                                                </p>
+                                                <p><span>收货状态：</span><span class="bg-secondary m-1 pl-1 pr-1 text-white">待收货</span>
+                                                </p>
+                                            </c:when>
+                                            <c:when test="${order.orderStateName=='待收货'}">
+                                                <p><span>付款状态：</span><span class="bg-success  m-1 pl-1 pr-1 text-white">已付款</span>
+                                                </p>
+                                                <p><span>发货状态：</span><span class="bg-success  m-1 pl-1 pr-1 text-white">已发货</span>
+                                                </p>
+                                                <p><span>收货状态：</span><span class="bg-secondary m-1 pl-1 pr-1 text-white">待收货</span>
+                                                </p>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <p><span>付款状态：</span><span class="bg-success  m-1 pl-1 pr-1 text-white">已付款</span>
+                                                </p>
+                                                <p><span>发货状态：</span><span class="bg-success  m-1 pl-1 pr-1 text-white">已发货</span>
+                                                </p>
+                                                <p><span>收货状态：</span><span class="bg-success m-1 pl-1 pr-1 text-white">已收货</span>
+                                                </p>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </div>
-                                </div>
-                            </td>
-                            <td>
-                                <span>￥1.00</span><br>
-                                <span>x1</span>
-                            </td>
-                            <td>
-                                <span>￥1.00</span><br>
-                                <span>(含运费：￥0.00)</span>
-                            </td>
-                            <td><span>下***己</span><br><span>(用户id：10226)</span></td>
-                            <td><span class="bg-primary text-white p-1">微信支付</span></td>
-                            <td><span class="bg-primary text-white p-1">快递配送</span></td>
-                            <td>
-                                <div class="mt-3 mb-3">
-                                    <p><span>付款状态：</span><span class="bg-success p-1 text-white">已付款</span></p>
-                                    <p><span>发货状态：</span><span class="bg-success p-1 text-white">已发货</span></p>
-                                    <p><span>收货状态：</span><span class="bg-success p-1 text-white">已收货</span></p>
-                                </div>
-                            </td>
-                            <td>
-                                <button class="btn-outline-success btn p-1" style="font-size: 13px">订单详情</button>
-                            </td>
-                        </tr>
+                                </td>
+                                <td>
+                                    <button class="btn-outline-success btn p-1" style="font-size: 13px" data-order="${order.orderNumber}">订单详情</button>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                         <tfoot></tfoot>
                     </table>

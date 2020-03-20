@@ -93,6 +93,12 @@ public class SimpleOrderMessageVo {
      */
     @ColName("gs.good_color_name")
     private String goodColor;
+//    gsi.good_size_name
+    /**
+     * 商品型号
+     */
+    @ColName("good_size_name")
+    private String goodSize;
 //    gi.good_img_name
     /**
      * 商品链接图片
@@ -101,25 +107,14 @@ public class SimpleOrderMessageVo {
     private String goodTitleImg;
 
 
-    @Override
-    public String toString() {
-        return "SimpleOrderMessageVo{" +
-                "orderId=" + orderId +
-                ", orderNumber='" + orderNumber + '\'' +
-                ", createTime=" + createTime +
-                ", userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", paymentName='" + paymentName + '\'' +
-                ", goodPrice=" + goodPrice +
-                ", orderGoodNumber=" + orderGoodNumber +
-                ", orderFreight=" + orderFreight +
-                ", orderStateName='" + orderStateName + '\'' +
-                ", orderDistribution='" + orderDistribution + '\'' +
-                ", goodName='" + goodName + '\'' +
-                ", goodId=" + goodId +
-                ", goodColor='" + goodColor + '\'' +
-                ", goodTitleImg='" + goodTitleImg + '\'' +
-                '}';
+    
+
+    public String getGoodSize() {
+        return goodSize;
+    }
+
+    public void setGoodSize(String goodSize) {
+        this.goodSize = goodSize;
     }
 
     public int getGoodId() {
