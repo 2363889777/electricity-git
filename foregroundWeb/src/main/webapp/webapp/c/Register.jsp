@@ -22,12 +22,13 @@
     <div class="login-top">
         <h1>REGISTER</h1>
         <form>
-            <input type="text" value="User Id" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Id';}">
-            <input type="password" value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
+            <input type="text" value="User Id" onfocus="this.value = '';" >
+            <input type="password" value="password" onfocus="this.value = '';" >
+
+            <div class="forgot">
+                <input type="submit" value="Register" >
+            </div>
         </form>
-        <div class="forgot">
-            <input type="submit" value="Register" >
-        </div>
     </div>
     <div class="login-bottom">
         <h3>switch to &nbsp;<a href="#">LOGIN</a>&nbsp Here</h3>

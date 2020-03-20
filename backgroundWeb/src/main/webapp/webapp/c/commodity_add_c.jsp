@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>商品添加</title>
+    <title>添加商品</title>
     <%@include file="/webapp/c/layout_c/styles.jsp"%>
 </head>
 <body>
@@ -49,6 +49,11 @@
                                </div>
 
                                <div class="form-group col-md-12">
+                                   <label for="import_file" class="control-label">商品缩略图</label>
+                                   <input type="file" name="files" class="file-loading" id="import_files" multiple/>
+                               </div>
+
+                               <div class="form-group col-md-12">
                                    <label>商品卖点</label>
                                    <input class="text" class="form-control">
                                </div>
@@ -62,34 +67,57 @@
                                                <div>
                                                    <label>商品规格</label>
                                                    <input type="radio" name="specification">单规格
-                                                   <input type="radio" name="specification">多规格
+
+                                                   <div class="form-group col-md-12">
+                                                       <label>商品编码</label>
+                                                       <input class="text" class="form-control">
+                                                   </div>
+
+                                                   <div class="form-group col-md-12">
+                                                       <label>商品价格</label>
+                                                       <input class="text" class="form-control">
+                                                   </div>
+
+                                                   <div class="form-group col-md-12">
+                                                       <label>商品划线价</label>
+                                                       <input class="text" class="form-control">
+                                                   </div>
+
+                                                   <div class="form-group col-md-12">
+                                                       <label>当前库存数量</label>
+                                                       <input class="text" class="form-control">
+                                                   </div>
+
+                                                   <div class="form-group col-md-12">
+                                                       <label>商品重量(Kg)</label>
+                                                       <input class="text" class="form-control">
+                                                   </div>
                                                </div>
                                            </div>
 
-                                           <div class="form-group col-md-12">
-                                               <label>商品编码</label>
-                                               <input class="text" class="form-control">
-                                           </div>
+                                           <div class="input-group-prepend">
+                                               <div>
+                                                   <label>商品规格</label>
+                                                   <input type="radio" name="specification">多规格
 
-                                           <div class="form-group col-md-12">
-                                               <label>商品价格</label>
-                                               <input class="text" class="form-control">
-                                           </div>
+                                                   <div class="card">
+                                                       <div class="card-header">
+                                                           <label>规格名</label>
+                                                           <input type="text" placeholder="请输入规格名称">
+                                                       </div>
+                                                       <div class="card-body">
+                                                           <label>规格值</label>
+                                                           <input type="text" placeholder="请输入规格值">
+                                                       </div>
+                                                       <div class="card-footer">
+                                                           <button>确定</button>
+                                                           <button>取消</button>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div><br>
 
-                                           <div class="form-group col-md-12">
-                                               <label>商品划线价</label>
-                                               <input class="text" class="form-control">
-                                           </div>
 
-                                           <div class="form-group col-md-12">
-                                               <label>当前库存数量</label>
-                                               <input class="text" class="form-control">
-                                           </div>
-
-                                           <div class="form-group col-md-12">
-                                               <label>商品重量(Kg)</label>
-                                               <input class="text" class="form-control">
-                                           </div>
 
                                            <div class="input-group-prepend">
                                                <div>
@@ -104,10 +132,13 @@
 
                            <div class="input-group">
                                <h5 class="col-md-12">商品详情</h5><br>
-                               <div class="form-group col-md-12">
-                                   <label>商品详情</label>
-                                   <textarea cols="20"></textarea>
-                               </div>
+                               <form>
+                                    <textarea name="editor1" id="editor1" rows="10" cols="80">
+                                    </textarea>
+                                   <script>
+                                       CKEDITOR.replace( 'editor1' );
+                                   </script>
+                               </form>
                            </div>
 
                            <div class="input-group">

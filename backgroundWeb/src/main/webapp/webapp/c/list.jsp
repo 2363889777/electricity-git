@@ -8,8 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>管理员</title>
-    <%@include file="/webapp/c/layout_c/styles.jsp"%>
+    <title>商品列表</title>
+    <%@include file="/webapp/c/layout_c/styles.jsp" %>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
@@ -35,7 +35,7 @@
                                 <th>商品ID</th>
                                 <th>商品图片</th>
                                 <th>商品名称</th>
-                                <th>商品分类	</th>
+                                <th>商品分类</th>
                                 <th>实际销量</th>
                                 <th>商品排序</th>
                                 <th>商品状态</th>
@@ -62,6 +62,16 @@
                         </table>
                     </div>
 
+
+                    <div class="container">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
