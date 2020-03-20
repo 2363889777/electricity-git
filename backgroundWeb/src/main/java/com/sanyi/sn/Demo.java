@@ -9,5 +9,5 @@ package com.sanyi.sn;
  * @copy 老九学堂
  */
 public class Demo {
-    private String test = "git添加测试";
+    private String test = "git添加测试aaa";
 }
