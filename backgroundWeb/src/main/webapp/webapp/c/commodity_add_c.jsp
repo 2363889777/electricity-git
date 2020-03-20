@@ -126,6 +126,16 @@
                                                    <input type="radio" name="inventory">付款减库存
                                                </div>
                                            </div>
+
+                                           <div class="custom-control custom-switch">
+                                               <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                               <label class="custom-control-label" for="customSwitch1">热销</label>
+                                           </div>
+
+                                           <div class="custom-control custom-switch">
+                                               <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                                               <label class="custom-control-label" for="customSwitch2">推荐</label>
+                                           </div>
                                        </div>
                                </div>
                            </div>
