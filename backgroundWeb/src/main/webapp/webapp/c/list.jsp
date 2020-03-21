@@ -50,10 +50,6 @@
             </select>
         </div>
 
-        <div class="form-group col">
-            <input type="text" class="form-control form-contro2" id="demo">
-                <button type="button" class="btn btn-primary">搜索</button>
-        </div>
     </div>
     <table class="table table-striped">
         <thead>
@@ -77,7 +73,12 @@
             <td>Iphone</td>
             <td>10</td>
             <td>20</td>
-            <td>上架</td>
+            <td>
+                <button>上架</button>
+                <button>热销</button>
+                <button>推荐</button>
+                <button>下架</button>
+            </td>
             <td>2018-06-25 19:32:28</td>
             <td>
                 <button type="button" class="btn btn-primary">编辑</button>
