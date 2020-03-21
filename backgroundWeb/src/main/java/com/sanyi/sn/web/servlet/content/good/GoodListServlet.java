@@ -32,8 +32,9 @@ public class GoodListServlet extends HttpServlet {
         //获取商品数据
         GoodService goodService = GoodServiceImpl.newObj();
         List<GoodVo> goodVoList = goodService.getGoods(0,10);
+        System.out.println(goodVoList);
         //设置进req
         req.setAttribute("goods",goodVoList);
-        req.getRequestDispatcher("/webapp/sn/good/list1.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/views/sn/content/good/goodList.jsp").forward(req, resp);
     }
 }

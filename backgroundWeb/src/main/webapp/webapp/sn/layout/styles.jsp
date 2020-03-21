@@ -13,3 +13,5 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/sn/pageContentGeneral.css">
         <%--订单 全部订单信息--%>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/sn/OrderDetailedMessage.css">
+        <%--商品列表样式--%>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/sn/goodList.css">
