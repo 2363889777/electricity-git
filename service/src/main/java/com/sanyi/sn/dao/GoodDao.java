@@ -46,6 +46,18 @@ public interface GoodDao {
     int deleteGoodMarketing(@Param("goodId")int goodId,@Param("goodMarketingTypeId") int goodMarketingTypeId);
 
     /**
+     * 根据商品ID 返回 商品相关的营销名称
+     * @param goodId 商品ID
+     * @return 商品相关的营销名称
+     */
+    @SQL(value = "select \n" +
+            "gmt.good_marketing_type_name\n" +
+            "from good_marketing gm \n" +
+            "inner join good_marketing_type gmt on gmt.pk_good_marketing_type_id = gm.pk_good_marketing_type_id\n" +
+            "where gm.pk_good_id = #{goodId};",resultType = String.class,type = SqlType.SELECT)
+    List<String> getGoodMarketingName(int goodId);
+
+    /**
      * 添加商品基本信息
      * @param classId 所属分类ID
      * @param isPutAway 是否上架
@@ -124,4 +136,6 @@ public interface GoodDao {
     @SQL(value = "select pk_good_type_id\n" +
             "from good_img_type where good_img_type_name = #{goodImgName};",resultType = Long.class,type = SqlType.SELECT)
     Long getGoodImgTypeId(@Param("goodImgName") String goodImgTypeName);
+
+
 }

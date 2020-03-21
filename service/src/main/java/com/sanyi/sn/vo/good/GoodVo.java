@@ -54,6 +54,24 @@ public class GoodVo {
     @ColName("gipt.good_is_putaway_name")
     private String goodIsPutAwayName;
 
+    /**
+     * 商品是否热销
+     */
+    @ColName("")
+    private boolean goodIsHot;
+
+    /**
+     * 商品是否推荐
+     */
+    @ColName("")
+    private boolean goodIsRecommend;
+
+    /**
+     * 商品是否应季
+     */
+    @ColName("")
+    private boolean goodIsSeasonal;
+
     @Override
     public String toString() {
         return "GoodVo{" +
@@ -65,6 +83,30 @@ public class GoodVo {
                 ", goodClassifyName='" + goodClassifyName + '\'' +
                 ", goodIsPutAwayName='" + goodIsPutAwayName + '\'' +
                 '}';
+    }
+
+    public boolean isGoodIsHot() {
+        return goodIsHot;
+    }
+
+    public void setGoodIsHot(boolean goodIsHot) {
+        this.goodIsHot = goodIsHot;
+    }
+
+    public boolean isGoodIsRecommend() {
+        return goodIsRecommend;
+    }
+
+    public void setGoodIsRecommend(boolean goodIsRecommend) {
+        this.goodIsRecommend = goodIsRecommend;
+    }
+
+    public boolean isGoodIsSeasonal() {
+        return goodIsSeasonal;
+    }
+
+    public void setGoodIsSeasonal(boolean goodIsSeasonal) {
+        this.goodIsSeasonal = goodIsSeasonal;
     }
 
     public int getGoodId() {

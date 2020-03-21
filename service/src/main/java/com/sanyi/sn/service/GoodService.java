@@ -1,5 +1,7 @@
 package com.sanyi.sn.service;
 
+import com.sanyi.sn.vo.good.GoodVo;
+
 import java.util.List;
 import java.util.Map;
 
@@ -29,4 +31,12 @@ public interface GoodService {
             int goodClassifyId, int isPutAway, String goodName, double goodPrice, int goodSales,
             Map<String,Map<Integer, Integer>> colorSizeAndCount, String titleImgName, List<String> showImgNames, List<String> goodInformationImgNames
             );
+
+    /**
+     * 获取所有的商品数据
+     * @param startNum 开始行
+     * @param endNum 结束行
+     * @return 获取区间内的商品数据
+     */
+    List<GoodVo> getGoods(int startNum,int endNum);
 }

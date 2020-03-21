@@ -2,6 +2,7 @@ package com.sanyi.sn.service.impl;
 
 import com.sanyi.sn.dao.GoodDao;
 import com.sanyi.sn.service.GoodService;
+import com.sanyi.sn.vo.good.GoodVo;
 import com.xuetang9.jdbc.frame.factory.SqlSessionFactoryUits;
 
 import java.util.List;
@@ -39,12 +40,12 @@ public class GoodServiceImpl implements GoodService {
         }
         int goodId = Integer.parseInt(GOOD_DAO.getRecentlyId().toString());
         //2. 添加商品详细规格信息
-        isAddBaseSuccess = isAddBaseSuccess || insertSku(colorSizeAndCount, goodId, goodPrice, goodSales, isAddBaseSuccess);
+        isAddBaseSuccess = isAddBaseSuccess && insertSku(colorSizeAndCount, goodId, goodPrice, goodSales, isAddBaseSuccess);
         if (!isAddBaseSuccess) {
             return false;
         }
         //3. 添加商品图片
-        isAddBaseSuccess = isAddBaseSuccess || insertImg(goodId, titleImgName, showImgNames, goodInformationImgNames, isAddBaseSuccess);
+        isAddBaseSuccess = isAddBaseSuccess && insertImg(goodId, titleImgName, showImgNames, goodInformationImgNames, isAddBaseSuccess);
         //成功
         if (isAddBaseSuccess) {
             SqlSessionFactoryUits.commit();
@@ -77,11 +78,11 @@ public class GoodServiceImpl implements GoodService {
             return false;
         }
         //3.1 添加链接图片
-        isAddBaseSuccess = isAddBaseSuccess || GOOD_DAO.insertGoodImg(goodId, getGoodImgTypeID("商品标题链接图片"), titleImgName) == 1;
+        isAddBaseSuccess = isAddBaseSuccess && GOOD_DAO.insertGoodImg(goodId, getGoodImgTypeID("商品标题链接图片"), titleImgName) == 1;
         //3.2 添加显示图片
         for (String imgName : showImgNames
         ) {
-            isAddBaseSuccess = isAddBaseSuccess || GOOD_DAO.insertGoodImg(goodId, getGoodImgTypeID("商品展示内容图片"), imgName) == 1;
+            isAddBaseSuccess = isAddBaseSuccess && GOOD_DAO.insertGoodImg(goodId, getGoodImgTypeID("商品展示内容图片"), imgName) == 1;
             //  添加失败
             if (!isAddBaseSuccess) {
                 SqlSessionFactoryUits.rollback();
@@ -91,7 +92,7 @@ public class GoodServiceImpl implements GoodService {
         //3.3 添加详细信息图片
         for (String imgName : goodInformationImgNames
         ) {
-            isAddBaseSuccess = isAddBaseSuccess || GOOD_DAO.insertGoodImg(goodId, getGoodImgTypeID("商品详细信息图片"), imgName) == 1;
+            isAddBaseSuccess = isAddBaseSuccess && GOOD_DAO.insertGoodImg(goodId, getGoodImgTypeID("商品详细信息图片"), imgName) == 1;
             //  添加失败
             if (!isAddBaseSuccess) {
                 SqlSessionFactoryUits.rollback();
@@ -124,7 +125,7 @@ public class GoodServiceImpl implements GoodService {
             for (Map.Entry<Integer, Integer> sizeAndCount : color.getValue().entrySet()
             ) {
 //                添加
-                isAddBaseSuccess = isAddBaseSuccess || GOOD_DAO.insertGoodSku(goodId, colorName, sizeAndCount.getKey(), goodPrice, sizeAndCount.getValue(), goodSales) == 1;
+                isAddBaseSuccess = isAddBaseSuccess && GOOD_DAO.insertGoodSku(goodId, colorName, sizeAndCount.getKey(), goodPrice, sizeAndCount.getValue(), goodSales) == 1;
                 //  添加失败
                 if (!isAddBaseSuccess) {
                     SqlSessionFactoryUits.rollback();
@@ -133,5 +134,42 @@ public class GoodServiceImpl implements GoodService {
             }
         }
         return isAddBaseSuccess;
+    }
+
+    public List<GoodVo> getGoods(int startNum, int endNum) {
+        List<GoodVo> goodVoList = GOOD_DAO.getSimpleGoodVos(startNum,endNum);
+        if(goodVoList == null || goodVoList.size() ==0){
+            return null;
+        }else {
+            for (GoodVo good: goodVoList
+                 ) {
+                addGoodVoMarketingState(good);
+            }
+            return goodVoList;
+        }
+    }
+
+    /**
+     * 根据传入的商品信息 更新 该商品的营销状态 热销，推荐，应季
+     * @param goodVo 商品信息
+     */
+    private void addGoodVoMarketingState(GoodVo goodVo){
+        // 获取商品id
+        int goodId = goodVo.getGoodId();
+        // 获取该商品的营销状态
+        List<String> goodMarketingName = GOOD_DAO.getGoodMarketingName(goodId);
+        // 设置相关信息
+        for (String stateName: goodMarketingName
+             ) {
+            if(stateName.equals("热销")){
+                goodVo.setGoodIsHot(true);
+            }
+            if(stateName.equals("推荐")){
+                goodVo.setGoodIsRecommend(true);
+            }
+            if(stateName.equals("应季")){
+                goodVo.setGoodIsSeasonal(true);
+            }
+        }
     }
 }
