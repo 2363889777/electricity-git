@@ -13,22 +13,16 @@
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-<div class="container-fluid h-100">
-    <div class="row h-100">
-        <%--左侧导航条--%>
-        <div class="col-1 bg-primary" id="left_nav_sn"></div>
-        <%--右侧内容--%>
-        <div class="col">
-            <%--头部通用条--%>
-            <div class="row bg-danger" style="height: 8%" id="header_nav_sn"></div>
-            <div class="row" style="height: 92%">
-                <%--左侧二级菜单导航条--%>
-                <div class="col-1 bg-secondary" id="left_second_nav_sn"></div>
-                <%--主体网页--%>
-                <div class="col">
+
                     <div class="container">
-                        <h4>管理员列表</h4>
-                        <a href="administrators_add_c.jsp">新增</a>
+                        <div class="headline">
+                            <div class="input-group">
+                                <span class="mess"></span>管理员列表
+                            </div>
+                        </div>
+                        <div class="form-group col">
+                            <button type="button" class="btn btn-success"><a href="administrators_add_c.jsp">新增</a></button>
+                        </div>
                         <table class="table table-striped">
                             <thead>
                             <tr>
@@ -51,12 +45,6 @@
                         </table>
                     </div>
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
 <%@include file="/webapp/c/layout_c/scripts.jsp" %>
 </body>
 </html>

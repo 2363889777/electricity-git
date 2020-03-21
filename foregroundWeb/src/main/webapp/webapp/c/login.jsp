@@ -30,13 +30,13 @@
     <div class="login-top">
         <h1>LOGIN</h1>
         <form>
-            <input type="text" value="User Id" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Id';}">
-            <input type="password" value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
+            <input type="text" value="User Id" onfocus="this.value = '';">
+            <input type="password" value="password" onfocus="this.value = '';">
+
+            <div class="forgot">
+                <input type="submit" value="Login" >
+            </div>
         </form>
-        <div class="forgot">
-            <a href="#">forgot Password</a>
-            <input type="submit" value="Login" >
-        </div>
     </div>
     <div class="login-bottom">
         <h3>New User &nbsp;<a href="Register.jsp">Register</a>&nbsp Here</h3>
