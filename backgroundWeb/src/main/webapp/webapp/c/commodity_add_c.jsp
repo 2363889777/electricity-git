@@ -12,220 +12,178 @@
     <%@include file="/webapp/c/layout_c/styles.jsp"%>
 </head>
 <body>
-<div class="container-fluid h-100">
-    <div class="row h-100">
-        <%--左侧导航条--%>
-        <div class="col-1 bg-primary" id="left_nav_sn"></div>
-        <%--右侧内容--%>
-        <div class="col">
-            <%--头部通用条--%>
-            <div class="row bg-danger" style="height: 8%" id="header_nav_sn"></div>
-            <div class="row" style="height: 92%">
-                <%--左侧二级菜单导航条--%>
-                <div class="col-1 bg-secondary" id="left_second_nav_sn"></div>
-                <%--主体网页--%>
-                <div class="col">
+
+
                     <div class="container">
-                       <form>
-                           <div class="input-group">
-                               <h5 class="col-md-12">基本信息</h5>
-                                   <div class="form-group col-md-12">
-                                       <label>商品名称</label>
-                                       <input class="text" class="form-control">
-                                   </div>
+                        <form>
+                            <div class="headline">
+                                <div class="input-group">
+                                    <span class="mess"></span>基本信息
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="des">商品名称 <span class="spa">*</span></label>
+                                <div class=""><input type="text" class="tpl-form-input "></div>
+                            </div>
 
-                                    <div class="form-group col-md-12">
-                                        <label>商品分类</label>
-                                        <select class="form-control" id="role">
-                                            <option>请选择商品分类</option>
-                                            <option>手机数码</option>
-                                            <option>家用电器</option>
-                                        </select>
+                            <div class="am-form-group">
+                                <label class="des">商品分类 <span class="spa">*</span></label>
+                                <div class="form-group">
+                                    <label for="sel1"></label>
+                                    <select class="form-control" id="sel1">
+                                        <option>请选择商品分类:</option>
+                                        <option>手机数码</option>
+                                        <option>加油电器</option>
+                                        <option>电脑办公</option>
+                                        <option>汽车用品</option>
+                                    </select>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label class="des">商品图片 <span class="spa">*</span></label>
+                                    <input type="file" name="files" class="file-loading" id="import_file" multiple/>
+                                </div>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                    <label class="custom-control-label" for="customSwitch1">热销</label>
+                                </div>
+
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                                    <label class="custom-control-label" for="customSwitch2">推荐</label>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label class="des">商品卖点</label>
+                                    <div class=""><input type="text" class="tpl-form-input "></div>
+                                </div>
+
+
+                                <div class="headline">
+                                    <div class="input-group">
+                                        <span class="mess"></span>规格/库存
                                     </div>
+                                </div>
 
-                               <div class="form-group col-md-12">
-                                   <label for="import_file" class="control-label">商品图片</label>
-                                   <input type="file" name="files" class="file-loading" id="import_file" multiple/>
-                               </div>
+                                <div class="am-form-group">
+                                    <label class="des">商品规格 <span class="spa">*</span></label>
+                                    <div class="container" style="margin-left: 120px;margin-top: -23px">
+                                        <label style="margin-right: 30px;padding-top: 0px;">
+                                            <input type="radio" name="specification">
+                                            <span>单规格</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="specification">
+                                            <span>多规格</span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <div class="am-form-group">
+                                            <label class="des">商品编码 <span class="spa">*</span></label>
+                                            <div class=""><input type="text" class="tpl-form-input "></div>
+                                        </div>
 
-                               <div class="form-group col-md-12">
-                                   <label for="import_file" class="control-label">商品缩略图</label>
-                                   <input type="file" name="files" class="file-loading" id="import_files" multiple/>
-                               </div>
+                                        <div class="am-form-group">
+                                            <label class="des">商品价格 <span class="spa">*</span></label>
+                                            <div class=""><input type="text" class="tpl-form-input "></div>
+                                        </div>
 
-                               <div class="form-group col-md-12">
-                                   <label>商品卖点</label>
-                                   <input class="text" class="form-control">
-                               </div>
-                           </div>
+                                        <div class="am-form-group">
+                                            <label class="des">商品划线价 <span class="spa">*</span></label>
+                                            <div class=""><input type="text" class="tpl-form-input "></div>
+                                        </div>
 
-                           <div class="input-group">
-                               <h5 class="col-md-12">规格/库存</h5><br>
-                               <div class="form-group col-md-12">
-                                       <div class="input-group">
-                                           <div class="input-group-prepend">
-                                               <div>
-                                                   <label>商品规格</label>
-                                                   <input type="radio" name="specification">单规格
+                                        <div class="am-form-group">
+                                            <label class="des">当前库存数量<span class="spa">*</span></label>
+                                            <div class=""><input type="text" class="tpl-form-input "></div>
+                                        </div>
 
-                                                   <div class="form-group col-md-12">
-                                                       <label>商品编码</label>
-                                                       <input class="text" class="form-control">
-                                                   </div>
+                                        <div class="am-form-group">
+                                            <label class="des">商品重量(Kg)<span class="spa">*</span></label>
+                                            <div class=""><input type="text" class="tpl-form-input "></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="des">库存计算方式</label>
+                                    <div class="container" style="margin-left: 120px;margin-top: -23px">
+                                        <label style="margin-right: 30px;padding-top: 0px;">
+                                            <input type="radio" name="specification">
+                                            <span>下单减库存</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="specification">
+                                            <span>付款减库存</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
 
-                                                   <div class="form-group col-md-12">
-                                                       <label>商品价格</label>
-                                                       <input class="text" class="form-control">
-                                                   </div>
+                            <div class="headline">
+                                <div class="input-group">
+                                    <span class="mess"></span>商品详情
+                                </div>
+                            </div>
 
-                                                   <div class="form-group col-md-12">
-                                                       <label>商品划线价</label>
-                                                       <input class="text" class="form-control">
-                                                   </div>
-
-                                                   <div class="form-group col-md-12">
-                                                       <label>当前库存数量</label>
-                                                       <input class="text" class="form-control">
-                                                   </div>
-
-                                                   <div class="form-group col-md-12">
-                                                       <label>商品重量(Kg)</label>
-                                                       <input class="text" class="form-control">
-                                                   </div>
-                                               </div>
-                                           </div>
-
-                                           <div class="input-group-prepend">
-                                               <div>
-                                                   <label>商品规格</label>
-                                                   <input type="radio" name="specification">多规格
-
-                                                   <div class="card">
-                                                       <div class="card-header">
-                                                           <label>规格名</label>
-                                                           <input type="text" placeholder="请输入规格名称">
-                                                       </div>
-                                                       <div class="card-body">
-                                                           <label>规格值</label>
-                                                           <input type="text" placeholder="请输入规格值">
-                                                       </div>
-                                                       <div class="card-footer">
-                                                           <button>确定</button>
-                                                           <button>取消</button>
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                           </div><br>
-
-
-
-                                           <div class="input-group-prepend">
-                                               <div>
-                                                   <label>库存计算方式</label>
-                                                   <input type="radio" name="inventory">下单减库存
-                                                   <input type="radio" name="inventory">付款减库存
-                                               </div>
-                                           </div>
-
-                                           <div class="custom-control custom-switch">
-                                               <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                               <label class="custom-control-label" for="customSwitch1">热销</label>
-                                           </div>
-
-                                           <div class="custom-control custom-switch">
-                                               <input type="checkbox" class="custom-control-input" id="customSwitch2">
-                                               <label class="custom-control-label" for="customSwitch2">推荐</label>
-                                           </div>
-                                       </div>
-                               </div>
-                           </div>
-
-                           <div class="input-group">
-                               <h5 class="col-md-12">商品详情</h5><br>
-                               <form>
+                            <div class="input-group">
+                                <form>
                                     <textarea name="editor1" id="editor1" rows="10" cols="80">
                                     </textarea>
-                                   <script>
-                                       CKEDITOR.replace( 'editor1' );
-                                   </script>
-                               </form>
-                           </div>
+                                </form>
+                            </div>
 
-                           <div class="input-group">
-                               <h5 class="col-md-12">其他设置</h5><br>
-                               <div class="form-group col-md-12">
-                                   <label>运费模板</label>
-                                   <select class="form-control" id="kind">
-                                       <option>请选择运费模板</option>
-                                       <option>全国统一邮费（按件数）</option>
-                                       <option>全国包邮（按件数）</option>
-                                   </select>
-                               </div>
+                            <div class="headline">
+                                <div class="input-group">
+                                    <span class="mess"></span>其他设置
+                                </div>
+                            </div>
 
-                               <div class="form-group col-md-12">
-                                   <label>商品状态 </label>
-                                   <input type="radio" name="state">上架
-                                   <input type="radio" name="state">下架
-                               </div>
+                            <label class="des">商品分类 <span class="spa">*</span></label>
+                            <div class="form-group">
+                                <label for="sel2"></label>
+                                <select class="form-control" id="sel2">
+                                    <option>请选择运费模板:</option>
+                                    <option>全国统一运费（按件数）</option>
+                                    <option>全国包邮（按件数）</option>
+                                </select>
+                            </div>
 
-                               <div class="form-group col-md-12">
-                                   <label>初始销量</label>
-                                   <input type="text" class="form-control">
-                               </div>
 
-                               <div class="form-group col-md-12">
-                                   <label>商品排序</label>
-                                   <input type="text" class="form-control">
-                               </div>
-                           </div>
+                            <div>
+                                <label class="des">商品状态 </label>
+                                <div class="container" style="margin-left: 120px;margin-top: -23px">
+                                    <label style="margin-right: 30px;padding-top: 0px;">
+                                        <input type="radio" name="specification">
+                                        <span>上架</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="specification">
+                                        <span>下架</span>
+                                    </label>
+                                </div>
+                            </div>
 
-                           <div class="input-group">
-                               <h5 class="col-md-12">积分设置</h5><br>
-                               <div class="form-group col-md-12">
-                                   <label>是否开启积分赠送 </label>
-                                   <input type="radio" name="state">开启
-                                   <input type="radio" name="state">关闭
-                               </div>
-                               <div class="form-group col-md-12">
-                                   <label>是否允许使用积分抵扣 </label>
-                                   <input type="radio" name="state">允许
-                                   <input type="radio" name="state">不允许
-                               </div>
-                           </div>
 
-                           <div class="input-group">
-                               <h5 class="col-md-12">积分设置</h5><br>
-                               <div class="form-group col-md-12">
-                                   <label>是否开启会员折扣 </label>
-                                   <input type="radio" name="state">开启
-                                   <input type="radio" name="state">关闭
-                               </div>
-                               <div class="form-group col-md-12">
-                                   <label>会员折扣设置 </label>
-                                   <input type="radio" name="state">默认折扣
-                                   <input type="radio" name="state">单独设置折扣
-                               </div>
-                           </div>
+                            <div class="am-form-group">
+                                <label class="des">初始销量 <span class="spa">*</span></label>
+                                <div class=""><input type="text" class="tpl-form-input" placeholder="0"></div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="des">商品排序 <span class="spa">*</span></label>
+                                <div class=""><input type="text" class="tpl-form-input" placeholder="10"></div>
+                            </div>
 
-                           <div class="input-group">
-                               <h5 class="col-md-12">分销设置</h5><br>
-                               <div class="form-group col-md-12">
-                                   <label>是否开启单独分销 </label>
-                                   <input type="radio" name="state">开启
-                                   <input type="radio" name="state">关闭
-                               </div>
-                           </div>
+                            <div class="am-form-group" style="text-align: center">
+                                <button type="submit" class="am-btn-secondary">提交</button>
+                            </div>
+                        </form>
 
-                           <button type="submit">提交</button>
-                       </form>
                     </div>
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <%@include file="/webapp/c/layout_c/scripts.jsp" %>
+
+                    <script>
+                        CKEDITOR.replace('editor1');
+                    </script>
 </body>
 </html>
