@@ -89,11 +89,6 @@
                                         </div>
 
                                         <div class="am-form-group">
-                                            <label class="des">商品划线价 <span class="spa">*</span></label>
-                                            <div class=""><input type="text" class="tpl-form-input "></div>
-                                        </div>
-
-                                        <div class="am-form-group">
                                             <label class="des">当前库存数量<span class="spa">*</span></label>
                                             <div class=""><input type="text" class="tpl-form-input "></div>
                                         </div>
