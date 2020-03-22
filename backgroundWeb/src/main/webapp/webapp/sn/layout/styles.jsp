@@ -17,3 +17,5 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/sn/goodList.css">
         <%--商品分类样式--%>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/sn/goodClassifyList.css">
+            <%--商品分类添加样式--%>
+            <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/sn/addGoodClassifyList.css">

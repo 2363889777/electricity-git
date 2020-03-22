@@ -105,4 +105,11 @@ public interface GoodService {
      */
     List<GoodClassifyVo> getGoodClassifies(int startNum,int endNum);
 
+    /**
+     * 添加商品分类名称
+     * @param classifyName 商品分类名称
+     * @param parentId 父级Id
+     * @return true 表示 插入成功
+     */
+    boolean addGoodClassify(String classifyName,int parentId);
 }

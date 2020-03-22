@@ -16,7 +16,7 @@
     <div class="container-fluid bg-white order-sn">
         <div class="row pl-4 pr-4 pt-4" id="add-good-classify-list-page-sn">
             <div class="container">
-                <form>
+                <form action="">
                     <div class="headline">
                         <div class="input-group">
                             <span class="mess"></span>添加商品分类
@@ -26,14 +26,14 @@
 
                     <div class="am-form-group">
                         <label class="des">分类名称<span class="spa">*</span></label>
-                        <div class=""><input type="text" class="tpl-form-input "></div>
+                        <div class=""><input type="text" class="tpl-form-input " name="classifyName"></div>
                     </div>
 
                     <div class="am-form-group">
                         <label class="des">上级分类 <span class="spa">*</span></label>
                         <div class="form-group">
                             <label for="sel1"></label>
-                            <select class="form-control" id="sel1">
+                            <select class="form-control" id="sel1" name="parentClassifyId">
                             </select>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="am-form-group" style="text-align: center">
-                        <button type="submit" class="am-btn-secondary">提交</button>
+                        <button type="button" class="am-btn-secondary" name="submit">提交</button>
                     </div>
                 </form>
             </div>

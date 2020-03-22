@@ -27,6 +27,10 @@ public class GoodServiceImpl implements GoodService {
         return new GoodServiceImpl();
     }
 
+    public boolean addGoodClassify(String classifyName, int parentId) {
+        return GOOD_DAO.addGoodClassify(classifyName,parentId) == 1;
+    }
+
     public boolean insertGoodMessage(int goodClassifyId, int isPutAway, String goodName, double goodPrice, int goodSales, Map<String, Map<Integer, Integer>> colorSizeAndCount, String titleImgName, List<String> showImgNames, List<String> goodInformationImgNames) {
         //1. 添加商品简单信息
         // 才创建时 销量为 0

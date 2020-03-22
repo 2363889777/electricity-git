@@ -106,4 +106,10 @@ public class GoodDaoTest {
     public void getGoodClassify() {
         System.out.println(goodDao.getGoodClassifies(0,4));
     }
+
+    @Test
+    public void addGoodClassify() {
+        System.out.println(goodDao.addGoodClassify("朋克",0));
+        SqlSessionFactoryUits.commit();
+    }
 }

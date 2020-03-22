@@ -192,4 +192,14 @@ public interface GoodDao {
             "limit #{startNum},#{endNum}",resultType = GoodClassifyVo.class,type = SqlType.SELECT)
     List<GoodClassifyVo> getGoodClassifies(@Param("startNum") int startNum,@Param("endNum") int endNum);
 
+    /**
+     * 添加商品分类
+     * @param classifyName 分类名称
+     * @param parentId 父级Id
+     * @return 影响行数
+     */
+    @SQL(value = "insert into good_classify (good_classify_name,good_classify_parent_id) values(#{classifyName},#{parentId});",
+    resultType = int.class,type = SqlType.INSERT)
+    int addGoodClassify(@Param("classifyName") String classifyName,@Param("parentId") int parentId);
+
 }
