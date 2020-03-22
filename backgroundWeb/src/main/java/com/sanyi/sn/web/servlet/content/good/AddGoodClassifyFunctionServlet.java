@@ -74,7 +74,7 @@ public class AddGoodClassifyFunctionServlet extends HttpServlet {
     }
 
     /**
-     * 处理下拉条 请求 菜单名称
+     * 处理下拉条 请求 分类名称
      * @param resp 相应对象
      * @throws IOException
      */

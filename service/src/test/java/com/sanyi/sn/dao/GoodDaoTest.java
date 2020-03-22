@@ -112,4 +112,14 @@ public class GoodDaoTest {
         System.out.println(goodDao.addGoodClassify("朋克",0));
         SqlSessionFactoryUits.commit();
     }
+
+    @Test
+    public void getGoodSize() {
+        System.out.println(goodDao.getGoodSize(0,10));
+    }
+
+    @Test
+    public void getGoodId(){
+        System.out.println(goodDao.getGoodId("无情"));
+    }
 }

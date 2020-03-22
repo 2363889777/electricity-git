@@ -9,7 +9,7 @@ import java.io.IOException;
 
 /**
  * @author 十年
- * @function 商品添加页面处理
+ * @function 转到商品添加页面处理
  * @date 2020/3/20 0020
  * @place 公司
  * @ver 1.0.0
@@ -24,6 +24,6 @@ public class AddGoodServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/webapp/sn/good/commodity_add_sn.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/views/sn/content/good/addGoodList.jsp").forward(req, resp);
     }
 }

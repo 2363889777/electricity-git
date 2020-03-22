@@ -1,5 +1,6 @@
 package com.sanyi.sn.dao;
 
+import com.sanyi.sn.domain.good.GoodSize;
 import com.sanyi.sn.vo.good.GoodClassifyVo;
 import com.sanyi.sn.vo.good.GoodVo;
 import com.xuetang9.jdbc.frame.annotation.Param;
@@ -202,4 +203,21 @@ public interface GoodDao {
     resultType = int.class,type = SqlType.INSERT)
     int addGoodClassify(@Param("classifyName") String classifyName,@Param("parentId") int parentId);
 
+    /**
+     * 查询商品尺码
+     * @param startNum 开始行数
+     * @param endNum 结束行数
+     * @return 商品尺码
+     */
+    @SQL(value = "select pk_good_size_id,good_size_name,crete_time,update_time from good_size limit #{startNum},#{endNum}"
+    ,resultType = GoodSize.class,type = SqlType.SELECT)
+    List<GoodSize> getGoodSize(@Param("startNum") int startNum,@Param("endNum") int endNum);
+
+    /**
+     * 根据商品名称返回 id
+     * @param goodName 商品名称
+     * @return 商品id
+     */
+    @SQL(value = "select pk_good_id from good where good_name = #{goodName};",resultType = Long.class,type = SqlType.SELECT)
+    Long getGoodId(@Param("goodName") String goodName);
 }
