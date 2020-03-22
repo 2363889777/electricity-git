@@ -2,11 +2,11 @@ package com.sanyi.sn.service.impl;
 
 import com.sanyi.sn.dao.GoodDao;
 import com.sanyi.sn.service.GoodService;
+import com.sanyi.sn.vo.good.GoodClassifyVo;
 import com.sanyi.sn.vo.good.GoodVo;
 import com.xuetang9.jdbc.frame.factory.SqlSessionFactoryUits;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author 十年
@@ -156,20 +156,131 @@ public class GoodServiceImpl implements GoodService {
     private void addGoodVoMarketingState(GoodVo goodVo){
         // 获取商品id
         int goodId = goodVo.getGoodId();
-        // 获取该商品的营销状态
-        List<String> goodMarketingName = GOOD_DAO.getGoodMarketingName(goodId);
-        // 设置相关信息
-        for (String stateName: goodMarketingName
-             ) {
-            if(stateName.equals("热销")){
-                goodVo.setGoodIsHot(true);
-            }
-            if(stateName.equals("推荐")){
-                goodVo.setGoodIsRecommend(true);
-            }
-            if(stateName.equals("应季")){
-                goodVo.setGoodIsSeasonal(true);
+        // 获取该商品的营销状态GOOD_DAO.getGoodMarketingName(goodId)
+        String goodMarketingNames = GOOD_DAO.getGoodMarketingName(goodId);
+        if(goodMarketingNames == null || goodMarketingNames.length() ==0){
+            return;
+        }else {
+            List<String> goodMarketingName = Arrays.asList(goodMarketingNames.split(","));
+            if(goodMarketingName ==null || goodMarketingName.size() == 0){return;}
+            // 设置相关信息
+            for (String stateName: goodMarketingName
+            ) {
+                if(stateName.equals("热销")){
+                    goodVo.setGoodIsHot(true);
+                }
+                if(stateName.equals("推荐")){
+                    goodVo.setGoodIsRecommend(true);
+                }
+                if(stateName.equals("应季")){
+                    goodVo.setGoodIsSeasonal(true);
+                }
             }
         }
+
+    }
+
+    public boolean setGoodPutAway(int goodId) {
+        int marketingId = getIsPutAwayId("上架");
+        if(marketingId == -1){
+            throw new RuntimeException("上架没找到");
+        }else {
+            return GOOD_DAO.updateGoodIsPutAway(goodId,marketingId) == 1;
+        }
+    }
+
+    public boolean setGoodNotPutAway(int goodId) {
+        int marketingId = getIsPutAwayId("下架");
+        if(marketingId == -1){
+            throw new RuntimeException("下架没找到");
+        }else {
+            return GOOD_DAO.updateGoodIsPutAway(goodId,marketingId) == 1;
+        }
+    }
+
+    public boolean setGoodHot(int goodId) {
+        int marketingId = getMarketingId("热销");
+        if(marketingId == -1){
+            throw new RuntimeException("热销没找到");
+        }else {
+            return GOOD_DAO.insertGoodMarketing(goodId,marketingId) == 1;
+        }
+    }
+
+    public boolean setGoodNotHot(int goodId) {
+        int marketingId = getMarketingId("热销");
+        if(marketingId == -1){
+            throw new RuntimeException("热销没找到");
+        }else {
+            return GOOD_DAO.deleteGoodMarketing(goodId,marketingId) == 1;
+        }
+    }
+
+    public boolean setGoodRecommend(int goodId) {
+        int marketingId = getMarketingId("推荐");
+        if(marketingId == -1){
+            throw new RuntimeException("推荐没找到");
+        }else {
+            return GOOD_DAO.insertGoodMarketing(goodId,marketingId) == 1;
+        }
+    }
+
+    public boolean setGoodNotRecommend(int goodId) {
+        int marketingId = getMarketingId("推荐");
+        if(marketingId == -1){
+            throw new RuntimeException("推荐没找到");
+        }else {
+            return GOOD_DAO.deleteGoodMarketing(goodId,marketingId) == 1;
+        }
+    }
+
+    public boolean setGoodSeasonal(int goodId) {
+        int marketingId = getMarketingId("应季");
+        if(marketingId == -1){
+            throw new RuntimeException("应季没找到");
+        }else {
+            return GOOD_DAO.insertGoodMarketing(goodId,marketingId) == 1;
+        }
+    }
+
+    public boolean setGoodNotSeasonal(int goodId) {
+        int marketingId = getMarketingId("应季");
+        if(marketingId == -1){
+            throw new RuntimeException("应季没找到");
+        }else {
+            return GOOD_DAO.deleteGoodMarketing(goodId,marketingId) == 1;
+        }
+    }
+
+    /**
+     * 根据营销类型名称 返回对应的 营销ID
+     * @param marketingName 营销类型名称
+     * @return 营销ID
+     */
+    private int getMarketingId(String marketingName){
+        Long id = GOOD_DAO.getGoodMarketingId(marketingName);
+        if(id == null){
+            return -1;
+        }else {
+            return Integer.parseInt(id.toString());
+        }
+    }
+
+    /**
+     * 根据上架 下架名称 返回相应的Id
+     * @param putAwayName 上架 下架名称
+     * @return 相应的Id
+     */
+    private int getIsPutAwayId(String putAwayName){
+        Long id = GOOD_DAO.getGoodIsPutAwayId(putAwayName);
+        if(id == null){
+            return -1;
+        }else {
+            return Integer.parseInt(id.toString());
+        }
+    }
+
+    public List<GoodClassifyVo> getGoodClassifies(int startNum, int endNum) {
+        return GOOD_DAO.getGoodClassifies(startNum,endNum);
     }
 }

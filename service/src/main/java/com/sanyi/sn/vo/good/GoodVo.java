@@ -82,6 +82,9 @@ public class GoodVo {
                 ", imgName='" + imgName + '\'' +
                 ", goodClassifyName='" + goodClassifyName + '\'' +
                 ", goodIsPutAwayName='" + goodIsPutAwayName + '\'' +
+                ", goodIsHot=" + goodIsHot +
+                ", goodIsRecommend=" + goodIsRecommend +
+                ", goodIsSeasonal=" + goodIsSeasonal +
                 '}';
     }
 

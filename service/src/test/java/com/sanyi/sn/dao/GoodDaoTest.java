@@ -50,6 +50,11 @@ public class GoodDaoTest {
     }
 
     @Test
+    public void getGoodMarketing() {
+            System.out.println(goodDao.getGoodMarketingName(1));
+    }
+
+    @Test
     public void insertGoodSize() {
         System.out.println(goodDao.insertGoodSize("S"));
     }
@@ -74,5 +79,31 @@ public class GoodDaoTest {
         System.out.println(goodDao.getGoodImgTypeId("商品标题链接图片"));
         System.out.println(goodDao.getGoodImgTypeId("商品展示内容图片"));
         System.out.println(goodDao.getGoodImgTypeId("商品详细信息图片"));
+    }
+
+    @Test
+    public void getMarketingId() {
+        System.out.println(goodDao.getGoodMarketingId(""));
+    }
+
+    @Test
+    public void getIsPutAwayId() {
+        System.out.println(goodDao.getGoodIsPutAwayId("上架"));
+    }
+
+    @Test
+    public void setGoodIsPutAway() {
+        System.out.println(goodDao.updateGoodIsPutAway(1,1));
+        SqlSessionFactoryUits.commit();
+    }
+
+    @Test
+    public void a() {
+        System.out.println(goodDao.getSimpleGoodVos(0,5));
+    }
+
+    @Test
+    public void getGoodClassify() {
+        System.out.println(goodDao.getGoodClassifies(0,4));
     }
 }

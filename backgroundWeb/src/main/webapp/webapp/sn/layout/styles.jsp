@@ -15,3 +15,5 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/sn/OrderDetailedMessage.css">
         <%--商品列表样式--%>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/sn/goodList.css">
+        <%--商品分类样式--%>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/sn/goodClassifyList.css">

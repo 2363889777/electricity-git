@@ -1,5 +1,6 @@
 package com.sanyi.sn.dao;
 
+import com.sanyi.sn.vo.good.GoodClassifyVo;
 import com.sanyi.sn.vo.good.GoodVo;
 import com.xuetang9.jdbc.frame.annotation.Param;
 import com.xuetang9.jdbc.frame.annotation.SQL;
@@ -36,6 +37,14 @@ public interface GoodDao {
     int insertGoodMarketing(@Param("goodId") int goodId, @Param("goodMarketingTypeId") int goodMarketingTypeId);
 
     /**
+     * 根据营销名称返回 营销Id
+     * @param marketingName 营销名称(对应:热销，推荐，应季。。。)
+     * @return 营销Id
+     */
+    @SQL(value = "select pk_good_marketing_type_id from good_marketing_type where good_marketing_type_name = #{marketingName};",resultType = Long.class,type = SqlType.SELECT)
+    Long getGoodMarketingId(@Param("marketingName") String marketingName);
+
+    /**
      * 删除营销数据 即给商品删除销售状态(根据商品ID ，销售状态ID筛选)
      * @param goodId 商品ID
      * @param goodMarketingTypeId 销售状态ID(对应:热销，推荐，应季。。。)
@@ -46,16 +55,27 @@ public interface GoodDao {
     int deleteGoodMarketing(@Param("goodId")int goodId,@Param("goodMarketingTypeId") int goodMarketingTypeId);
 
     /**
+     * 删除营销数据 即给商品删除销售状态(根据商品ID ，销售状态名称筛选)
+     * @param goodID 商品ID
+     * @param marketingName 销售状态名称(对应:热销，推荐，应季。。。)
+     * @return 影响行数
+     */
+    @SQL(value = "delete from good_marketing where pk_good_id = #{goodID} and \n" +
+            "pk_good_marketing_type_id = (select pk_good_marketing_type_id from good_marketing_type where good_marketing_type_name = #{marketingName});"
+    ,resultType = int.class,type = SqlType.DELETE)
+    int deleteGoodMarketing(@Param("goodID") int goodID,@Param("marketingName") String marketingName);
+
+    /**
      * 根据商品ID 返回 商品相关的营销名称
      * @param goodId 商品ID
      * @return 商品相关的营销名称
      */
     @SQL(value = "select \n" +
-            "gmt.good_marketing_type_name\n" +
+            "group_concat(gmt.good_marketing_type_name)\n" +
             "from good_marketing gm \n" +
             "inner join good_marketing_type gmt on gmt.pk_good_marketing_type_id = gm.pk_good_marketing_type_id\n" +
-            "where gm.pk_good_id = #{goodId};",resultType = String.class,type = SqlType.SELECT)
-    List<String> getGoodMarketingName(int goodId);
+            "where gm.pk_good_id = #{goodId} limit 1;",resultType = String.class,type = SqlType.SELECT)
+    String getGoodMarketingName(@Param("goodId") int goodId);
 
     /**
      * 添加商品基本信息
@@ -116,8 +136,11 @@ public interface GoodDao {
             "gipt.good_is_putaway_name\n" +
             "from good g\n" +
             "inner join good_img gi on gi.pk_good_id = g.pk_good_id\n" +
+            "inner join good_img_type git on git.pk_good_type_id = gi.pk_good_type_id\n" +
             "inner join good_classify gc on gc.pk_good_classify_id = g.pk_good_classify_id\n" +
             "inner join good_is_putaway_table gipt on gipt.pk_good_is_putaway_id = g.pk_good_is_putaway_id\n" +
+            "where git.pk_good_type_id = \n" +
+            "(select pk_good_type_id from good_img_type where good_img_type_name = '商品标题链接图片')\n" +
             "limit #{startNum},#{endNum};",resultType = GoodVo.class,type = SqlType.SELECT)
     List<GoodVo> getSimpleGoodVos(@Param("startNum") int startNum,@Param("endNum") int endNum);
 
@@ -137,5 +160,36 @@ public interface GoodDao {
             "from good_img_type where good_img_type_name = #{goodImgName};",resultType = Long.class,type = SqlType.SELECT)
     Long getGoodImgTypeId(@Param("goodImgName") String goodImgTypeName);
 
+    /**
+     * 查询上架，下架 对应的Id
+     * @param putAwayName 上架，下架名字
+     * @return 对应的Id
+     */
+    @SQL(value = "select pk_good_is_putaway_id from good_is_putaway_table where good_is_putaway_name = #{putAwayName};",
+    resultType = Long.class,type = SqlType.SELECT)
+    Long getGoodIsPutAwayId(@Param("putAwayName") String putAwayName);
+
+    /**
+     * 更新商品上下架状态
+     * @param goodId  商品ID
+     * @param putAwayId 上下架ID
+     * @return 影响行数
+     */
+    @SQL(value = "update good set pk_good_is_putaway_id = #{putAwayId} where pk_good_id = #{goodId}",resultType = int.class,type = SqlType.UPDATE)
+    int updateGoodIsPutAway(@Param("goodId") int goodId,@Param("putAwayId") int putAwayId);
+
+    /**
+     * 查询商品分类
+     * @param startNum 开始行数
+     * @param endNum 结束行数
+     * @return 商品分类
+     */
+    @SQL(value = "select \n" +
+            "gc.pk_good_classify_id,gc.good_classify_name,gc.create_time,\n" +
+            "pgc.good_classify_name\n" +
+            "from good_classify gc\n" +
+            "left outer join good_classify pgc on gc.good_classify_parent_id = pgc.pk_good_classify_id\n" +
+            "limit #{startNum},#{endNum}",resultType = GoodClassifyVo.class,type = SqlType.SELECT)
+    List<GoodClassifyVo> getGoodClassifies(@Param("startNum") int startNum,@Param("endNum") int endNum);
 
 }

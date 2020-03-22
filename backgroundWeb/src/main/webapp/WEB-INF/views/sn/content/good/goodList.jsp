@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>商品列表</title>
@@ -22,7 +23,8 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col">
-                        <button type="button" class="btn btn-success text-white">新增</button>
+                        <button type="button" class="btn btn-success text-white" id="good-list-add-button-sn">新增
+                        </button>
                     </div>
                     <div class="form-group col">
                         <label for="sel1"></label>
@@ -62,29 +64,76 @@
                     <c:forEach items="${requestScope.goods}" var="good">
                         <tr>
                             <td>${good.goodId}</td>
-                            <td>a</td>
+                            <td>
+                                <img class="mr-3"
+                                     src="${pageContext.request.contextPath}/static/img/sn/good${good.goodId}/${good.imgName}"
+                                     alt="Generic placeholder image"
+                                     width="75px" height="75px">
+                            </td>
                             <td>${good.goodName}</td>
                             <td>${good.goodClassifyName}</td>
                             <td>${good.goodSales}</td>
-                            <td>10</td>
                             <td>
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="good-is-putAway-sn1">
-                                    <label class="custom-control-label" for="good-is-putAway-sn1">上架</label>
+                                    <c:choose>
+                                        <c:when test="${good.goodIsPutAwayName eq '上架'}">
+                                            <input type="checkbox" class="custom-control-input" checked="true"
+                                                   id="good-is-putAway-sn-good${good.goodId}"
+                                                   data-good="${good.goodId}">
+                                        </c:when>
+                                        <c:otherwise>
+                                            <input type="checkbox" class="custom-control-input"
+                                                   id="good-is-putAway-sn-good${good.goodId}"
+                                                   data-good="${good.goodId}">
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <label class="custom-control-label"
+                                           for="good-is-putAway-sn-good${good.goodId}">上架</label>
                                 </div>
 
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="good-recommend-sn1">
-                                    <label class="custom-control-label" for="good-recommend-sn1">推荐</label>
+                                    <c:choose>
+                                        <c:when test="${good.goodIsRecommend}">
+                                            <input type="checkbox" class="custom-control-input" checked="checked"
+                                                   id="good-recommend-sn-good${good.goodId}" data-good="${good.goodId}">
+                                        </c:when>
+                                        <c:otherwise>
+                                            <input type="checkbox" class="custom-control-input"
+                                                   id="good-recommend-sn-good${good.goodId}" data-good="${good.goodId}">
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <label class="custom-control-label"
+                                           for="good-recommend-sn-good${good.goodId}">推荐</label>
                                 </div>
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="good-hot-sn1">
-                                    <label class="custom-control-label" for="good-hot-sn1">热销</label>
+                                    <c:choose>
+                                        <c:when test="${good.goodIsHot}">
+                                            <input type="checkbox"
+                                                   class="custom-control-input"
+                                                   checked="checked"
+                                                   id="good-hot-sn-good${good.goodId}" data-good="${good.goodId}">
+                                        </c:when>
+                                        <c:otherwise>
+                                            <input type="checkbox" class="custom-control-input"
+                                                   id="good-hot-sn-good${good.goodId}" data-good="${good.goodId}">
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <label class="custom-control-label" for="good-hot-sn-good${good.goodId}">热销</label>
                                 </div>
 
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="good-seasonal-sn1">
-                                    <label class="custom-control-label" for="good-seasonal-sn1">应季</label>
+                                    <c:choose>
+                                        <c:when test="${good.goodIsSeasonal}">
+                                            <input type="checkbox"
+                                                   class="custom-control-input"
+                                                   checked="checked"
+                                                   id="good-seasonal-sn-good${good.goodId}" data-good="${good.goodId}">
+                                        </c:when>
+                                        <c:otherwise><input type="checkbox" class="custom-control-input"
+                                                            id="good-seasonal-sn-good${good.goodId}" data-good="${good.goodId}"></c:otherwise>
+                                    </c:choose>
+                                    <label class="custom-control-label"
+                                           for="good-seasonal-sn-good${good.goodId}">应季</label>
                                 </div>
                             </td>
                             <td>${good.goodCreateTime}</td>

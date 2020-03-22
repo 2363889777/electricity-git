@@ -1,5 +1,6 @@
 package com.sanyi.sn.service;
 
+import com.sanyi.sn.vo.good.GoodClassifyVo;
 import com.sanyi.sn.vo.good.GoodVo;
 
 import java.util.List;
@@ -39,4 +40,69 @@ public interface GoodService {
      * @return 获取区间内的商品数据
      */
     List<GoodVo> getGoods(int startNum,int endNum);
+
+    /**
+     * 设置商品为上架
+     * @param goodId 商品ID
+     * @return 成功返回true
+     */
+    boolean setGoodPutAway(int goodId);
+
+    /**
+     * 设置商品下架
+     * @param goodId 商品ID
+     * @return 成功返回true
+     */
+    boolean setGoodNotPutAway(int goodId);
+
+    /**
+     * 设置商品为热销
+     * @param goodId 商品ID
+     * @return 成功返回true
+     */
+    boolean setGoodHot(int goodId);
+
+    /**
+     * 取消商品热销
+     * @param goodId 商品ID
+     * @return 成功返回true
+     */
+    boolean setGoodNotHot(int goodId);
+
+    /**
+     * 设置商品为推荐
+     * @param goodId 商品ID
+     * @return 成功返回true
+     */
+    boolean setGoodRecommend(int goodId);
+
+    /**
+     * 取消商品推荐
+     * @param goodId  商品ID
+     * @return 成功返回true
+     */
+    boolean setGoodNotRecommend(int goodId);
+
+    /**
+     * 设置商品应季
+     * @param goodId 商品ID
+     * @return 成功返回true
+     */
+    boolean setGoodSeasonal(int goodId);
+
+    /**
+     * 取消商品应季
+     * @param goodId 商品ID
+     * @return 成功返回true
+     */
+    boolean setGoodNotSeasonal(int goodId);
+
+    /**
+     * 获取商品分类
+     * @param startNum 开始行数
+     * @param endNum 结束行数
+     * @return  获取商品分类
+     */
+    List<GoodClassifyVo> getGoodClassifies(int startNum,int endNum);
+
 }
