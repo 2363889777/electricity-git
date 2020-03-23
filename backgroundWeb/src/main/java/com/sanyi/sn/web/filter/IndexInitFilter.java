@@ -29,10 +29,14 @@ public class IndexInitFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         System.out.println("执行菜单数据初始化");
         List backgroundMenus = (List)((HttpServletRequest)request).getSession().getAttribute("oneLevelMenu");
-        if(backgroundMenus == null ){
+        System.out.println(backgroundMenus);
+        if(backgroundMenus == null || backgroundMenus.size() == 0){
             BackgroundMenuService backgroundMenuService = BackgroundMenuServiceImpl.newInstance();
             ((HttpServletRequest)request).getSession().setAttribute("oneLevelMenu",backgroundMenuService.getBackgroundMenuByLevel(1));
+
+            System.out.println("打印"+backgroundMenuService.getBackgroundMenuByLevel(1));
         }
+
         chain.doFilter(request, response);
     }
 
