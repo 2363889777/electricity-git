@@ -41,18 +41,18 @@ public class LoginHandle extends HttpServlet {
         if (!(nameResult&&passResult)){
             req.setAttribute("error","账号和密码不能为空");
             //错误 转发到登录页面
-            req.getRequestDispatcher("").forward(req,resp);
+            req.getRequestDispatcher("WEB-INF/views/a/login.jsp").forward(req,resp);
         }
 
         //验证用户名和密码是否匹配
        boolean loginResult = loginService.loginCheck(name,pass);
         if(loginResult){
             //正确 重定向到主页面
-            resp.sendRedirect("");
+            resp.sendRedirect("webapp/sn/index_sn.jsp");
         }else {
             req.setAttribute("error","账号或密码错误");
             //错误 转发到登录页面
-            req.getRequestDispatcher("").forward(req,resp);
+            req.getRequestDispatcher("WEB-INF/views/a/login.jsp").forward(req,resp);
         }
     }
 }

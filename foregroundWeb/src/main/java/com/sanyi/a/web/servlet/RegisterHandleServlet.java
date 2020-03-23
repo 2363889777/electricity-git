@@ -39,7 +39,7 @@ public class RegisterHandleServlet extends HttpServlet {
         Boolean nameAndPassResult = StringUtils.isNotNullOrWhiteSpace(pass) && StringUtils.isNotNullOrEmpty(name);
         if(!nameAndPassResult){
             //错误 转发到登录页面
-            req.getRequestDispatcher("").forward(req,resp);
+            req.getRequestDispatcher("WEB-INF/views/a/Register.jsp").forward(req,resp);
         }
 
         // 执行注册并保存执行结果
@@ -48,8 +48,8 @@ public class RegisterHandleServlet extends HttpServlet {
         // 根据执行进行反馈
         if(rResult == -1){
             //错误 转发到登录页面
-            req.getRequestDispatcher("").forward(req,resp);
+            req.getRequestDispatcher("WEB-INF/views/a/Register.jsp").forward(req,resp);
         }
-        req.getRequestDispatcher("").forward(req,resp);
+        req.getRequestDispatcher("WEB-INF/views/a/login.jsp").forward(req,resp);
     }
 }
