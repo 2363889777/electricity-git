@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>添加管理员</title>
-    <%@include file="/webapp/c/layout_c/styles.jsp" %>
+    <%@include file="/webapp/a/layout/styles.jsp"%>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
@@ -60,7 +60,7 @@
         </div>
 
         <div class="am-form-group" style="text-align: center">
-            <button type="submit" class="am-btn-secondary">提交</button>
+            <button type="button" id="a" class="am-btn-secondary">提交</button>
         </div>
     </form>
 

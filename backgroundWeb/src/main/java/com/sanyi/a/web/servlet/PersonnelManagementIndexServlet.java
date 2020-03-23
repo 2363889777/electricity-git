@@ -41,6 +41,6 @@ public class PersonnelManagementIndexServlet extends HttpServlet {
         session.setAttribute("values",backgroundConsumerDomains);
         System.out.println(backgroundConsumerDomains.size());
 
-        req.getRequestDispatcher("webapp/c/index_c.jsp").forward(req,resp);
+        req.getRequestDispatcher("WEB-INF/views/a/index_c.jsp").forward(req,resp);
     }
 }

@@ -8,4 +8,4 @@
         <!-- 引入bootstrap 上传插件 的样式 -->
         <link rel="stylesheet" href="<%= request.getContextPath() %>/static/lib/bootstrap-fileinput/css/fileinput.css">
 
-        <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/c/commodity_add_c.css">
+        <link  rel="stylesheet" href="<%= request.getContextPath() %>/static/css/c/commodity_add_c.css">

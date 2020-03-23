@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>管理员</title>
-    <%@include file="/webapp/c/layout_c/styles.jsp"%>
+    <%@include file="/webapp/a/layout/styles.jsp"%>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
