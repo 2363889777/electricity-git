@@ -41,7 +41,7 @@
                                 <label class="des">商品链接图片 <span class="spa">*</span></label><br>
                                 <input type="file" name="good-title-img" id="import_file" multiple enctype="multipart/form-data"/>
                             </div>
-                            <button type="button" id="title-img-button">提交</button>
+<%--                            <button type="button" id="title-img-button">提交</button>--%>
                         </form>
                         <form>
                             <div class="am-form-group">

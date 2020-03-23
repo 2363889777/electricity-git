@@ -19,14 +19,29 @@
     $('#add-good-list-page-sn #title-img-button').on("click",function () {
         let content = $('#add-good-list-page-sn #title-img-form').serialize();
         console.log(content)
+        var file = $("#import_file")[0].files[0];
+        var form = new FormData();
+        form.append('myfile', file);
         $.ajax({
-            url:address+"/pageContent/good/GoodClassifyList/add/goodImg",
-            data:content,
-            type: 'post',
-            success:function (content) {
-                console.log(content)
+            type: 'POST',
+            url: address+"/pageContent/good/GoodClassifyList/add/goodImg",
+            data: form,
+            processData: false,  // 告诉jquery不转换数据
+            contentType: false,  // 告诉jquery不设置内容格式
+
+            success: function (arg) {
+                console.log(arg);
+
             }
         })
+        // $.ajax({
+        //     url:address+"/pageContent/good/GoodClassifyList/add/goodImg",
+        //     data:content,
+        //     type: 'post',
+        //     success:function (content) {
+        //         console.log(content)
+        //     }
+        // })
     })
 
     //选择商品尺码的下拉条

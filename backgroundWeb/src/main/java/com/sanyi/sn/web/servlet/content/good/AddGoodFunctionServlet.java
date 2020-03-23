@@ -81,6 +81,7 @@ public class AddGoodFunctionServlet extends HttpServlet {
                         SqlSessionFactoryUits.commit();
                         resp.getWriter().write("商品营销状态更新成功");
                     }
+
                 }else {
                     resp.getWriter().write("新增失败");
                     SqlSessionFactoryUits.rollback();
