@@ -19,7 +19,9 @@
     $('#add-good-list-page-sn [name="add-good-commit-button"]').on("click",function () {
         let content = $('#add-good-list-page-sn #title-img-form').serialize();
         console.log(content)
+        // 获取所有的文件上传 可以循环遍历
         var file = $("#import_file")[0].files[0];
+        // 创建form对象
         var form = new FormData();
         form.append('myfile', file);
         $.ajax({

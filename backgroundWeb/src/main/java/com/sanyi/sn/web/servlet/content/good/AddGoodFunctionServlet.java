@@ -30,8 +30,7 @@ import java.util.List;
  */
 @WebServlet("/pageContent/good/addGood/function")
 public class AddGoodFunctionServlet extends HttpServlet {
-    // 上传文件存储目录
-    private static final String UPLOAD_DIRECTORY = "upload";
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -50,7 +49,8 @@ public class AddGoodFunctionServlet extends HttpServlet {
 
     }
 
-
+    // 上传文件存储目录
+    private static final String UPLOAD_DIRECTORY = "upload";
     private void addImg(HttpServletRequest request, HttpServletResponse resp){
         // 配置上传参数
         DiskFileItemFactory factory = new DiskFileItemFactory();
