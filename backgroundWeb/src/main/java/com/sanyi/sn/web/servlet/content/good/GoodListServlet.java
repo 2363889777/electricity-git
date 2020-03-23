@@ -31,7 +31,7 @@ public class GoodListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //获取商品数据
         GoodService goodService = GoodServiceImpl.newObj();
-        List<GoodVo> goodVoList = goodService.getGoods(0,10);
+        List<GoodVo> goodVoList = goodService.getGoods(0,20);
         System.out.println(goodVoList);
         //设置进req
         req.setAttribute("goods",goodVoList);

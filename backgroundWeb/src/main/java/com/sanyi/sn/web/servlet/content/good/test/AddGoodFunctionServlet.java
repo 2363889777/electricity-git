@@ -1,4 +1,4 @@
-package com.sanyi.sn.web.servlet.content.good;
+package com.sanyi.sn.web.servlet.content.good.test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sanyi.sn.domain.good.GoodSize;
@@ -7,6 +7,7 @@ import com.sanyi.sn.service.impl.GoodServiceImpl;
 import com.sanyi.sn.util.RequestUtils;
 import com.xuetang9.jdbc.frame.factory.SqlSessionFactoryUits;
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
@@ -18,7 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 十年
@@ -28,7 +31,7 @@ import java.util.List;
  * @ver 1.0.0
  * @copy 老九学堂
  */
-@WebServlet("/pageContent/good/addGood/function")
+@WebServlet("/pageContent/good/addGood/function/test")
 public class AddGoodFunctionServlet extends HttpServlet {
 
 
@@ -47,9 +50,11 @@ public class AddGoodFunctionServlet extends HttpServlet {
             case "parentForm":
                 addDate(req,resp);
                 break;
+            case "test":
+                formTest(req, resp);
+                break;
             default:
         }
-
     }
 
     // 上传文件存储目录
@@ -103,6 +108,92 @@ public class AddGoodFunctionServlet extends HttpServlet {
         }
     }
 
+    private void formTest(HttpServletRequest request, HttpServletResponse resp) throws IOException {
+        DiskFileItemFactory factory = new DiskFileItemFactory();
+        //2、创建一个文件上传解析器
+        ServletFileUpload upload = new ServletFileUpload(factory);
+        List<String> pList = new ArrayList<>();
+        List<FileItem> list = null;
+        String filename = null;
+        Map<String,FileItem> imgFile = new HashMap<>();
+        Map<String, String> imgName = new HashMap<>();
+        try {
+            list = upload.parseRequest(request);
+        } catch (FileUploadException e) {
+            e.printStackTrace();
+        }
+
+        for (FileItem item : list) {
+            //如果fileitem中封装的是普通输入项的数据
+            if (item.isFormField()) {
+                //String name = item.getFieldName();
+                String value = item.getString("UTF-8");
+                pList.add(value);
+                //将非文件的其他参数放到一个list中，后面可以顺序的去取到
+                //System.out.println("name"+name+"value"+value);
+                continue;
+            } else {//如果fileitem中封装的是上传文件
+                String fileName = new File(item.getName()).getName();
+                System.out.println("参数名："+item.getFieldName());
+                System.out.println("文件名："+fileName);
+                imgFile.put(item.getFieldName(),item);
+                imgName.put(item.getFieldName(),item.getName());
+            }
+        }
+        //后台验证数据
+        for (String value:pList
+             ) {
+            if(value==null||value.trim().length()==0){
+                resp.getWriter().write("输入内容格式错误");
+                return;
+            }
+        }
+        String goodName = pList.get(0);
+        int parentId = Integer.parseInt(pList.get(1));
+        String goodColor = pList.get(2);
+        int goodSize = Integer.parseInt( pList.get(3));
+        double goodPrice = Double.parseDouble( pList.get(4));
+        int goodCount = Integer.parseInt( pList.get(5));
+        //2 添加数据
+        //2.1 添加数据库数据
+        GoodService goodService = GoodServiceImpl.newObj();
+        List<String> imgs = new ArrayList<>();
+        boolean success = goodService.insertGoodMessage(parentId, true, goodName, goodPrice, 0, goodColor, goodSize, goodCount, imgName.get("good-title-img"), imgs, imgs);
+        //2.2 下载记录图片
+        //3 返回信息
+        if (success) {
+            resp.getWriter().write("新增成功");
+            SqlSessionFactoryUits.commit();
+            int goodId = goodService.getGoodId(goodName);
+            //记录标题图片
+            FileItem item = imgFile.get("good-title-img");
+            String fileName = new File(item.getName()).getName();
+            // 这个路径相对当前应用的目录
+            String titleImgPath = UPLOAD_DIRECTORY+"\\good"+goodId+"\\title";
+            String uploadPath = getServletContext().getRealPath("/")+ File.separator + titleImgPath;
+            // 如果目录不存在则创建
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdirs();
+            }
+            String filePath = uploadPath + File.separator + fileName;
+            File storeFile = new File(filePath);
+            // 在控制台输出文件的上传路径
+            System.out.println(filePath);
+            // 保存文件到硬盘
+            try {
+                item.write(storeFile);
+                resp.getWriter().write("图片加载成功");
+            } catch (Exception e) {
+                resp.getWriter().write("图片加载失败");
+                throw new RuntimeException(e.getMessage(),e);
+            }
+        } else {
+            resp.getWriter().write("新增失败");
+            SqlSessionFactoryUits.rollback();
+        }
+
+    }
     private void addDate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1. 获取需求数据
         int parentId = Integer.parseInt(RequestUtils.getParameterNumber(req, "goodClassify"));

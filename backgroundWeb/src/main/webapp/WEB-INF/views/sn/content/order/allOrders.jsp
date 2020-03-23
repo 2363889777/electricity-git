@@ -103,7 +103,7 @@
                                 <td>
                                     <div class="media">
                                         <img class="mr-3"
-                                             src="${pageContext.request.contextPath}/static/img/sn/good${order.goodId}/${order.goodTitleImg}"
+                                             src="${pageContext.request.contextPath}/static/img/sn/good${order.goodId}/title/${order.goodTitleImg}"
                                              alt="Generic placeholder image"
                                         width="75px" height="75px">
                                         <div class="media-body">

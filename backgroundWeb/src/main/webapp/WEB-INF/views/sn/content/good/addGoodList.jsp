@@ -17,7 +17,7 @@
     <div class="container-fluid bg-white order-sn">
         <div class="row pl-4 pr-4 pt-4" id="add-good-list-page-sn">
             <div class="container">
-                <form class="parent-form-add-good">
+                <form class="parent-form-add-good" id="all-message-form">
                     <div class="headline">
                         <div class="input-group">
                             <span class="mess"></span>基本信息
@@ -36,41 +36,40 @@
                                 <option>请选择商品分类:</option>
                             </select>
                         </div>
-                        <form enctype="multipart/form-data" method="post" id="title-img-form">
+<%--                        <form enctype="multipart/form-data" method="post" id="title-img-form">--%>
                             <div class="am-form-group">
                                 <label class="des">商品链接图片 <span class="spa">*</span></label><br>
                                 <input type="file" name="good-title-img" id="import_file" multiple enctype="multipart/form-data"/>
                             </div>
 <%--                            <button type="button" id="title-img-button">提交</button>--%>
-                        </form>
+<%--                        </form>--%>
                         <form>
                             <div class="am-form-group">
                                 <label class="des">商品展示图片 <span class="spa">*</span></label><br>
                                 <input type="file" name="good-show-imgs"  multiple/>
                             </div>
                         </form>
-                        <div>
-                            <label class="des">商品状态 </label>
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="customSwitch3"
-                                       name="goodPutAway" value="1">
-                                <input type="hidden" name="goodPutAway" value="0">
-                                <label class="custom-control-label" for="customSwitch3">上架</label>
-                            </div>
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="customSwitch1" name="goodHot"
-                                       value="1">
-                                <input type="hidden" name="goodHot" value="0">
-                                <label class="custom-control-label" for="customSwitch1">热销</label>
-                            </div>
-
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="customSwitch2"
-                                       name="goodRecommend" value="1">
-                                <input type="hidden" name="goodRecommend" value="0">
-                                <label class="custom-control-label" for="customSwitch2">推荐</label>
-                            </div>
-                        </div>
+<%--                        <div>--%>
+<%--                            <label class="des">商品状态 </label>--%>
+<%--                            <div class="custom-control custom-switch">--%>
+<%--                                <input type="checkbox" class="custom-control-input" id="customSwitch3"--%>
+<%--                                       name="goodPutAway" value="1">--%>
+<%--                                <input type="hidden" name="goodPutAway" value="0">--%>
+<%--                                <label class="custom-control-label" for="customSwitch3">上架</label>--%>
+<%--                            </div>--%>
+<%--                            <div class="custom-control custom-switch">--%>
+<%--                                <input type="checkbox" class="custom-control-input" id="customSwitch1" name="goodHot"--%>
+<%--                                       value="1">--%>
+<%--                                <input type="hidden" name="goodHot" value="9">--%>
+<%--                                <label class="custom-control-label" for="customSwitch1">热销</label>--%>
+<%--                            </div>--%>
+<%--                            <div class="custom-control custom-switch">--%>
+<%--                                <input type="checkbox" class="custom-control-input" id="customSwitch2"--%>
+<%--                                       name="goodRecommend" value="1">--%>
+<%--                                <input type="hidden" name="goodRecommend" value="0">--%>
+<%--                                <label class="custom-control-label" for="customSwitch2">推荐</label>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
 
 
                         <div class="am-form-group">
@@ -127,7 +126,7 @@
 
                                 <div class="am-form-group">
                                     <label class="des">商品重量(Kg)<span class="spa">*</span></label>
-                                    <div class=""><input type="text" class="tpl-form-input " name="good"></div>
+                                    <div class=""><input type="text" class="tpl-form-input "></div>
                                 </div>
                             </div>
                         </div>
@@ -135,11 +134,11 @@
                             <label class="des">库存计算方式</label>
                             <div class="container" style="margin-left: 120px;margin-top: -23px">
                                 <label style="margin-right: 30px;padding-top: 0px;">
-                                    <input type="radio" name="specification">
+                                    <input type="radio">
                                     <span>下单减库存</span>
                                 </label>
                                 <label>
-                                    <input type="radio" name="specification">
+                                    <input type="radio">
                                     <span>付款减库存</span>
                                 </label>
                             </div>

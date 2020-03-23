@@ -66,7 +66,7 @@
                             <td>${good.goodId}</td>
                             <td>
                                 <img class="mr-3"
-                                     src="${pageContext.request.contextPath}/static/img/sn/good${good.goodId}/${good.imgName}"
+                                     src="${pageContext.request.contextPath}/static/img/sn/good${good.goodId}/title/${good.imgName}"
                                      alt="Generic placeholder image"
                                      width="75px" height="75px">
                             </td>
@@ -148,5 +148,6 @@
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
