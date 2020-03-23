@@ -38,12 +38,9 @@ public class PersonnelManagementIndexServlet extends HttpServlet {
         List<BackgroundConsumerDomain> backgroundConsumerDomains = personnelManagementService.inquireAll();
         // 用session保存页面显示的数据
         HttpSession session = req.getSession();
-        session.setAttribute("test",backgroundConsumerDomains);
+        session.setAttribute("values",backgroundConsumerDomains);
         System.out.println(backgroundConsumerDomains.size());
-        for (BackgroundConsumerDomain a:backgroundConsumerDomains
-             ) {
-            System.out.println("难受" + a.getPkCustomerName());
-        }
-        req.getRequestDispatcher("webapp/sn/index_sn.jsp").forward(req,resp);
+
+        req.getRequestDispatcher("webapp/c/index_c.jsp").forward(req,resp);
     }
 }

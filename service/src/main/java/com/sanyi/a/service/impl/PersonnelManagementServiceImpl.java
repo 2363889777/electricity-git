@@ -43,7 +43,7 @@ public class PersonnelManagementServiceImpl implements PersonnelManagementServic
         if(sResult){
              aResult = backgroundConsumerDao.addEmployee(name,realName,pass);
         }
-
+        SqlSessionFactoryUits.commit();
         return aResult;
     }
 

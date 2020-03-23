@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: chen
@@ -21,7 +22,7 @@
                             </div>
                         </div>
                         <div class="form-group col">
-                            <button type="button" class="btn btn-success"><a href="administrators_add_c.jsp">新增</a></button>
+                            <button type="button" class="btn btn-success"><a href="webapp/c/administrators_add_c.jsp">新增</a></button>
                         </div>
                         <table class="table table-striped">
                             <thead>
@@ -34,14 +35,26 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>10001</td>
-                                <td>admin</td>
-                                <td>管理员</td>
-                                <td>2018-06-25 19:32:28</td>
-                                <td></td>
-                            </tr>
-                            </tbody>
+                        <tr>
+                            <td>10001</td>
+                            <td>admin</td>
+                            <td>管理员</td>
+                            <td>2018-06-25 19:32:28</td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                            <c:forEach items="${values}" var="value" >
+                                <tbody>
+                                    <tr>
+                                        <td>${value.pkCustomerBgId}</td>
+                                        <td>${value.pkCustomerName}</td>
+                                        <td>管理员</td>
+                                        <td>${value.createTime}</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </c:forEach>
+
                         </table>
                     </div>
 

@@ -14,7 +14,7 @@
 <body>
 
                     <div class="container">
-                        <form>
+                        <form action="/addUser">
                                 <div class="headline">
                                     <div class="input-group">
                                         <span class="mess"></span>添加商品分类

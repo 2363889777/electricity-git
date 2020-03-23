@@ -22,10 +22,10 @@
         </div>
     </div>
 
-    <form>
+    <form action="/addUser">
         <div class="am-form-group">
             <label class="des">用户名<span class="spa">*</span></label>
-            <div class=""><input type="text" class="tpl-form-input "></div>
+            <div class=""><input name="name" type="text" class="tpl-form-input "></div>
         </div>
 
         <div class="am-form-group">
@@ -44,17 +44,17 @@
 
         <div class="am-form-group">
             <label class="des">登录密码<span class="spa">*</span></label>
-            <div class=""><input type="text" class="tpl-form-input "></div>
+            <div class=""><input name="pass" type="text" class="tpl-form-input "></div>
         </div>
 
         <div class="am-form-group">
             <label class="des">确认密码<span class="spa">*</span></label>
-            <div class=""><input type="text" class="tpl-form-input "></div>
+            <div class=""><input name="verifyPass" type="text" class="tpl-form-input "></div>
         </div>
 
         <div class="am-form-group">
             <label class="des">姓名<span class="spa">*</span></label>
-            <div class=""><input type="text" class="tpl-form-input "></div>
+            <div class=""><input name="realName" type="text" class="tpl-form-input "></div>
         </div>
 
         <div class="am-form-group" style="text-align: center">
