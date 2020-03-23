@@ -36,12 +36,19 @@
                                 <option>请选择商品分类:</option>
                             </select>
                         </div>
-
-                        <div class="am-form-group">
-                            <label class="des">商品图片 <span class="spa">*</span></label>
-                            <input type="file" name="files" class="file-loading" id="import_file" multiple/>
-                        </div>
-
+                        <form enctype="multipart/form-data" method="post" id="title-img-form">
+                            <div class="am-form-group">
+                                <label class="des">商品链接图片 <span class="spa">*</span></label><br>
+                                <input type="file" name="good-title-img" id="import_file" multiple enctype="multipart/form-data"/>
+                            </div>
+                            <button type="button" id="title-img-button">提交</button>
+                        </form>
+                        <form>
+                            <div class="am-form-group">
+                                <label class="des">商品展示图片 <span class="spa">*</span></label><br>
+                                <input type="file" name="good-show-imgs"  multiple/>
+                            </div>
+                        </form>
                         <div>
                             <label class="des">商品状态 </label>
                             <div class="custom-control custom-switch">
@@ -51,7 +58,8 @@
                                 <label class="custom-control-label" for="customSwitch3">上架</label>
                             </div>
                             <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="customSwitch1" name="goodHot" value="1">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch1" name="goodHot"
+                                       value="1">
                                 <input type="hidden" name="goodHot" value="0">
                                 <label class="custom-control-label" for="customSwitch1">热销</label>
                             </div>
@@ -144,12 +152,12 @@
                         </div>
                     </div>
 
-                    <div class="input-group">
-                        <form>
-                                    <textarea name="editor1" id="editor1" rows="10" cols="80">
-                                    </textarea>
-                        </form>
-                    </div>
+                    <form>
+                        <div class="input-group">
+                            <textarea name="goodDetailedPicture" id="editor1" rows="10" cols="80">
+                            </textarea>
+                        </div>
+                    </form>
 
                     <div class="headline">
                         <div class="input-group">

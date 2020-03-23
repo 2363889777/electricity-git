@@ -6,12 +6,25 @@
     $('#add-good-list-page-sn [name="add-good-commit-button"]').on('click',function () {
         let parentForm = $('#add-good-list-page-sn .parent-form-add-good').serialize();
         console.log(parentForm);
+        // $.ajax({
+        //     url:address+"/pageContent/good/addGood/function",
+        //     data:parentForm,
+        //     type:"post",
+        //     success:function (content) {
+        //         alert(content);
+        //     }
+        // })
+    })
+
+    $('#add-good-list-page-sn #title-img-button').on("click",function () {
+        let content = $('#add-good-list-page-sn #title-img-form').serialize();
+        console.log(content)
         $.ajax({
-            url:address+"/pageContent/good/addGood/function",
-            data:parentForm,
-            type:"post",
+            url:address+"/pageContent/good/GoodClassifyList/add/goodImg",
+            data:content,
+            type: 'post',
             success:function (content) {
-                alert(content);
+                console.log(content)
             }
         })
     })

@@ -42,6 +42,7 @@
                                     <label class="des">商品图片 <span class="spa">*</span></label>
                                     <input type="file" name="files" class="file-loading" id="import_file" multiple/>
                                 </div>
+
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="customSwitch1">
                                     <label class="custom-control-label" for="customSwitch1">热销</label>

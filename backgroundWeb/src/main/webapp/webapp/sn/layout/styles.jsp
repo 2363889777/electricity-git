@@ -7,17 +7,19 @@
         rel="stylesheet">
         <!-- 引入bootstrap 上传插件 的样式 -->
         <link rel="stylesheet" href="<%= request.getContextPath() %>/static/lib/bootstrap-fileinput/css/fileinput.css">
+
         <!-- 引入Font Awesome字体图标的样式 -->
         <%--        <link rel="stylesheet" href="<%=request.getContextPath() %>/static/lib/fontawesome/css/all.css">--%>
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/static/lib/fontAwesome4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="<%=request.getContextPath() %>
+        /static/lib/fontAwesome4.7.0/css/font-awesome.min.css">
         <%--订单  通用样式页面样式--%>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/sn/pageContentGeneral.css">
         <%--订单 全部订单信息--%>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/sn/OrderDetailedMessage.css">
         <%--商品列表样式--%>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/sn/goodList.css">
-            <%--添加商品列表样式--%>
-            <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/sn/addGoodList.css">
+        <%--添加商品列表样式--%>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/sn/addGoodList.css">
         <%--商品分类样式--%>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/sn/goodClassifyList.css">
         <%--商品分类添加样式--%>
