@@ -1,7 +1,7 @@
 package com.sanyi.a.web.servlet;
 
 import com.sanyi.a.service.LoginService;
-import com.sanyi.a.service.impl.BackgroundLoginServiceImpl;
+import com.sanyi.a.service.impl.LoginServiceImpl;
 import com.sanyi.a.utils.StringUtils;
 
 import javax.servlet.ServletException;
@@ -29,7 +29,7 @@ public class LoginHandle extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //创建业务处理对象
-        LoginService loginService = new BackgroundLoginServiceImpl();
+        LoginService loginService = new LoginServiceImpl();
 
         //得到登录页面提交的用户名和密码
          String name =  req.getParameter("account");
