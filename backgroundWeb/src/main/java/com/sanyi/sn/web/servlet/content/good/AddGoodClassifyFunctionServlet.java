@@ -36,6 +36,7 @@ public class AddGoodClassifyFunctionServlet extends HttpServlet {
             case "form":
                 form(req,resp);
                 break;
+
             default:
                 resp.getWriter().write("书写不通过");
         }

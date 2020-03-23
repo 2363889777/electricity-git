@@ -6,17 +6,17 @@
     $('#add-good-list-page-sn [name="add-good-commit-button"]').on('click',function () {
         let parentForm = $('#add-good-list-page-sn .parent-form-add-good').serialize();
         console.log(parentForm);
-        // $.ajax({
-        //     url:address+"/pageContent/good/addGood/function",
-        //     data:parentForm,
-        //     type:"post",
-        //     success:function (content) {
-        //         alert(content);
-        //     }
-        // })
+        $.ajax({
+            url:address+"/pageContent/good/addGood/function",
+            data:parentForm,
+            type:"post",
+            success:function (content) {
+                alert(content);
+            }
+        })
     })
 
-    $('#add-good-list-page-sn #title-img-button').on("click",function () {
+    $('#add-good-list-page-sn [name="add-good-commit-button"]').on("click",function () {
         let content = $('#add-good-list-page-sn #title-img-form').serialize();
         console.log(content)
         var file = $("#import_file")[0].files[0];
@@ -24,7 +24,7 @@
         form.append('myfile', file);
         $.ajax({
             type: 'POST',
-            url: address+"/pageContent/good/GoodClassifyList/add/goodImg",
+            url: address+"/pageContent/good/addGood/function?type=img",
             data: form,
             processData: false,  // 告诉jquery不转换数据
             contentType: false,  // 告诉jquery不设置内容格式
