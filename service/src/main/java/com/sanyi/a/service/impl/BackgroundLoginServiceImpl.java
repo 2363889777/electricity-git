@@ -1,6 +1,6 @@
 package com.sanyi.a.service.impl;
 
-import com.sanyi.a.dao.UserDao;
+import com.sanyi.a.dao.BackgroundConsumerDao;
 import com.sanyi.a.domain.UserDomain;
 import com.sanyi.a.service.LoginService;
 import com.sanyi.a.utils.StringUtils;
@@ -9,21 +9,21 @@ import com.xuetang9.jdbc.frame.factory.SqlSessionFactoryUits;
 import java.util.List;
 
 /**
- * @工能 后端注册业务
+ * @工能 执行后端登录业务
  * @作者 杜目杰
- * @时间 2020/3/20
+ * @时间 2020/3/18
  * @地点 公司
  * @版本 1.0.0
  * @版权 老九学堂
  */
-public class LoginServiceImpl implements LoginService {
-    UserDao userDao = SqlSessionFactoryUits.getCurrentMapper(UserDao.class);
+public class BackgroundLoginServiceImpl implements LoginService {
+    BackgroundConsumerDao backgroundConsumerDao = SqlSessionFactoryUits.getCurrentMapper(BackgroundConsumerDao.class);
     public boolean loginCheck(String name, String password) {
-        String pass = userDao.selectByPk_user_name(name).getUser_password();
+       String pass = backgroundConsumerDao.selectByPk_user_name(name).getCustomerPassword();
         return password.equals(pass)&& StringUtils.isNotNullOrWhiteSpace(pass);
     }
     public int getPages() {
-        int numbers = userDao.selectAll().size();
+        int numbers = backgroundConsumerDao.selectAll().size();
         int page = numbers/10;
         if(numbers > page*10){
             page += 1;
@@ -32,6 +32,6 @@ public class LoginServiceImpl implements LoginService {
     }
 
     public List<UserDomain> getPagesDate(int pages) {
-        return userDao.selectTenNumber((pages-1)*10);
+        return backgroundConsumerDao.selectTenNumber((pages-1)*10);
     }
 }
