@@ -19,7 +19,11 @@ import java.util.List;
 public class LoginServiceImpl implements LoginService {
     UserDao userDao = SqlSessionFactoryUits.getCurrentMapper(UserDao.class);
     public boolean loginCheck(String name, String password) {
-        String pass = userDao.selectByPk_user_name(name).getUser_password();
+        UserDomain userDomain =  userDao.selectByPk_user_name(name);
+        if(userDao.selectByPk_user_name(name) == null){
+            return false;
+        }
+        String pass = userDomain.getUser_password();
         return password.equals(pass)&& StringUtils.isNotNullOrWhiteSpace(pass);
     }
     public int getPages() {

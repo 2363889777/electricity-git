@@ -1,7 +1,9 @@
 package com.sanyi.a.service.impl;
 
 import com.sanyi.a.dao.BackgroundConsumerDao;
+import com.sanyi.a.domain.BackgroundConsumerDomain;
 import com.sanyi.a.domain.UserDomain;
+import com.sanyi.a.service.BackgroundLoginService;
 import com.sanyi.a.service.LoginService;
 import com.sanyi.a.utils.StringUtils;
 import com.xuetang9.jdbc.frame.factory.SqlSessionFactoryUits;
@@ -16,10 +18,15 @@ import java.util.List;
  * @版本 1.0.0
  * @版权 老九学堂
  */
-public class BackgroundLoginServiceImpl implements LoginService {
+public class BackgroundLoginServiceImpl implements BackgroundLoginService {
     BackgroundConsumerDao backgroundConsumerDao = SqlSessionFactoryUits.getCurrentMapper(BackgroundConsumerDao.class);
     public boolean loginCheck(String name, String password) {
-       String pass = backgroundConsumerDao.selectByPk_user_name(name).getCustomerPassword();
+
+        BackgroundConsumerDomain backgroundConsumerDomain =  backgroundConsumerDao.selectByPk_user_name(name);
+        if (backgroundConsumerDomain == null){
+            return false;
+        }
+        String pass =backgroundConsumerDomain.getCustomerPassword();
         return password.equals(pass)&& StringUtils.isNotNullOrWhiteSpace(pass);
     }
     public int getPages() {
@@ -31,7 +38,7 @@ public class BackgroundLoginServiceImpl implements LoginService {
         return page;
     }
 
-    public List<UserDomain> getPagesDate(int pages) {
+    public List<BackgroundConsumerDomain> getPagesDate(int pages) {
         return backgroundConsumerDao.selectTenNumber((pages-1)*10);
     }
 }

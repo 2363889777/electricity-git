@@ -54,6 +54,6 @@ public interface BackgroundConsumerDao {
      * @param pages
      * @return 用户信息对象的集合
      */
-    @SQL(value="select * from background_consumer limit #{arg0}，10}",resultType = UserDomain.class)
-    List<UserDomain> selectTenNumber(int pages);
+    @SQL(value="select * from background_consumer limit #{arg0}，10}",resultType = BackgroundConsumerDomain.class)
+    List<BackgroundConsumerDomain> selectTenNumber(int pages);
 }

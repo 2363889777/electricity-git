@@ -25,7 +25,7 @@ public interface PersonnelManagementService {
      * @param pages 页数
      * @return 前台用户信息对象的集合
      */
-    List<UserDomain> getPagesDate(int pages);
+    List<BackgroundConsumerDomain> getPagesDate(int pages);
 
     /**
      * 根据后台用户名删除员工

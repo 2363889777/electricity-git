@@ -27,7 +27,7 @@ public class PersonnelManagementServiceImpl implements PersonnelManagementServic
         return page;
     }
 
-    public List<UserDomain> getPagesDate(int pages) {
+    public List<BackgroundConsumerDomain> getPagesDate(int pages) {
         return backgroundConsumerDao.selectTenNumber((pages-1)*10);
     }
 
