@@ -1,7 +1,6 @@
 package com.sanyi.a.web.servlet;
 
 import com.sanyi.a.service.BackgroundLoginService;
-import com.sanyi.a.service.LoginService;
 import com.sanyi.a.service.impl.BackgroundLoginServiceImpl;
 import com.sanyi.a.utils.StringUtils;
 
@@ -48,6 +47,7 @@ public class LoginHandle extends HttpServlet {
         //验证用户名和密码是否匹配
        boolean loginResult = loginService.loginCheck(name,pass);
         if(loginResult){
+            req.getSession().setAttribute("account",name);
             //正确 重定向到主页面
             resp.sendRedirect("/sn/back/index");
         }else {
