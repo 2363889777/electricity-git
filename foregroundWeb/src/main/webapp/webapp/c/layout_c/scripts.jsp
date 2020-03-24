@@ -7,3 +7,6 @@
 <!-- 引入jquery-validation的JS文件 -->
 <script src="<%=request.getContextPath() %>/static/lib/jquery-validation/jquery.validate.js"></script>
 <script src="<%=request.getContextPath() %>/static/lib/jquery-validation/additional-methods.js"></script>
+
+<%--商品详情页js--%>
+<script src="<%=request.getContextPath() %>/static/js/c/details.js"></script>

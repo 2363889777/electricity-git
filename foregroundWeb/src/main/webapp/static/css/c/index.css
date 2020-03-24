@@ -1,0 +1,21 @@
+.mess {
+    position: absolute;
+    width: 4px;
+    height: 14px;
+    background: #FF5500;
+    top: 6px;
+    left: -12px;
+}
+
+.headline {
+    width: 100%;
+    padding: 12px 20px;
+    border-bottom: 1px solid #eef1f5;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.recommend > div {
+    float: left;
+    margin: 5px 5px;
+}
