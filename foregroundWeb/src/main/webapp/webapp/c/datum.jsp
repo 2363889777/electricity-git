@@ -24,12 +24,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">个人资料</a>
+                <a class="nav-link" href="datum.jsp">个人资料</a>
             </li>
 
 
             <li class="nav-item">
-                <a class="nav-link" href="#">收货地址</a>
+                <a class="nav-link" href="site.jsp">收货地址</a>
             </li>
         </ul>
     </div>

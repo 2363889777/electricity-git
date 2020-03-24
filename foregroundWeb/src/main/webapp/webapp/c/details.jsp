@@ -25,12 +25,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">个人资料</a>
+                <a class="nav-link" href="datum.jsp">个人资料</a>
             </li>
 
 
             <li class="nav-item">
-                <a class="nav-link" href="#">收货地址</a>
+                <a class="nav-link" href="site.jsp">收货地址</a>
             </li>
 
         </ul>
@@ -128,8 +128,7 @@
             </p>
         </div>
         <div>
-            <button type="button" class="btn btn-warning">立即购买</button>
-            <button type="button" class="btn btn-danger">加入购物车</button>
+            <button type="button" class="btn btn-warning"><a href="order.jsp">立即购买</a></button>
         </div>
     </div>
 

@@ -29,17 +29,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">个人资料</a>
+                <a class="nav-link" href="datum.jsp">个人资料</a>
             </li>
 
 
             <li class="nav-item">
-                <a class="nav-link" href="#">收货地址</a>
+                <a class="nav-link" href="site.jsp">收货地址</a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="#">购物车</a>
-            </li>
         </ul>
     </div>
 </nav>
@@ -94,7 +91,31 @@
         </div>
 
         <div class="container" style="margin: 5px 55px">
-            <button type="button" class="btn btn-danger">提交订单</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                提交订单
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">扫码支付</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="/static/img/c/1.png">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </div>

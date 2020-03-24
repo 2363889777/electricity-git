@@ -11,6 +11,12 @@
 <head>
     <title>首页</title>
     <%@include file="/webapp/c/layout_c/styles.jsp" %>
+
+    <style>
+        a{
+            text-decoration:none;
+        }
+    </style>
 </head>
 <body>
 
@@ -24,7 +30,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">登录</a>
+                <a class="nav-link" href="login.jsp">登录</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -73,12 +79,14 @@
     </div>
     <div class="input-group recommend">
         <div class="card" style="width: 16rem;">
+            <a href="details.jsp">
             <img class="card-img-top"
                  src="https://img.alicdn.com/bao/uploaded/i3/TB1PYJ3PXXXXXcQXXXXXXXXXXXX_!!0-item_pic.jpg_200x200q90.jpg_.webp">
             <div class="card-body">
                 <p class="card-text">2020春装新款长袖t恤女韩版宽松潮条纹大码连帽宽松学生上衣帽衫</p>
                 <p class="card-link" style="color: red">￥399</p>
             </div>
+            </a>
         </div>
         <div class="card" style="width: 16rem;">
             <img class="card-img-top"
