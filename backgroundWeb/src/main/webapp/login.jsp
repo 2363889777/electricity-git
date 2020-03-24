@@ -29,7 +29,7 @@
 <div class="login">
     <div class="login-top">
         <h1>LOGIN</h1>
-        <form action="/loginHandle">
+        <form action="${pageContext.request.contextPath}/loginHandle" type="post">
             <input name="account" type="text" value="User Id" onfocus="this.value = '';">
             <input name="password" type="password" value="password" onfocus="this.value = '';">
 

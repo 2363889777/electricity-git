@@ -37,15 +37,6 @@
                                 <th>操作</th>
                             </tr>
                             </thead>
-                            <tbody>
-                        <tr>
-                            <td>10001</td>
-                            <td>admin</td>
-                            <td>管理员</td>
-                            <td>2018-06-25 19:32:28</td>
-                            <td></td>
-                        </tr>
-                        </tbody>
                             <c:forEach items="${values}" var="value" >
                                 <tbody>
                                     <tr>
