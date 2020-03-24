@@ -17,7 +17,7 @@ import java.util.List;
  * @copy 老九学堂
  */
 public class OrderServiceImpl implements OrderService {
-    private final static OrderDao ORDER_DAO = SqlSessionFactoryUits.getCurrentSqlSession().getMapper(OrderDao.class);
+    private final OrderDao ORDER_DAO = SqlSessionFactoryUits.getCurrentSqlSession().getMapper(OrderDao.class);
 
     private OrderServiceImpl(){}
 

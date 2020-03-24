@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * @author 十年
  * @function 全部订单
- * @date 2020/3/17 0017
+ * @date 2020/3/17
  * @place 公司
  * @ver 1.0.0
  * @copy 老九学堂
@@ -26,6 +26,7 @@ public class AllOrdersServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         OrderService orderService = OrderServiceImpl.newObj();
         List<SimpleOrderMessageVo> simpleOrderMessageVoList = orderService.getOrderSimpleMessage(0,5);
+        System.out.println(simpleOrderMessageVoList);
         req.setAttribute("orders",simpleOrderMessageVoList);
         req.getRequestDispatcher("/WEB-INF/views/sn/content/order/allOrders.jsp").forward(req, resp);
     }

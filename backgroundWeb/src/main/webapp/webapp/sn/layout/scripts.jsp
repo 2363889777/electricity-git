@@ -11,3 +11,9 @@
         <!-- 引入jquery-validation的JS文件 -->
         <script src="<%=request.getContextPath() %>/static/lib/jquery-validation/jquery.validate.js"></script>
         <script src="<%=request.getContextPath() %>/static/lib/jquery-validation/additional-methods.js"></script>
+        <!-- 引入bootstrap 上传插件 的样式 -->
+        <script src="<%=request.getContextPath() %>/static/lib/bootstrap-fileinput/js/fileinput.js"></script>
+        <script src="<%=request.getContextPath() %>/static/lib/bootstrap-fileinput/js/locales/zh.js"></script>
+        <script src="<%=request.getContextPath() %>/static/js/c/style.js"></script>
+        <!-- 引入富文本插件 的样式 -->
+        <script src="<%=request.getContextPath() %>/static/lib/ckeditor/ckeditor.js"></script>

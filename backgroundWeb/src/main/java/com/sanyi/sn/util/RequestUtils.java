@@ -20,4 +20,18 @@ public final class RequestUtils {
         return StringUtilsSN.isNullOrWhiteSpace(request.getParameter("menuId"))?-1:
                 Integer.parseInt(request.getParameter("menuId"))==1?-1:Integer.parseInt(request.getParameter("menuId"));
     }
+
+    /**
+     * 获取字符串 放置为空 空指针异常
+     * @param request 请求对象
+     * @param key 请求的键名
+     * @return 空字符串 或者 请求的值
+     */
+    public static String getParameter(HttpServletRequest request,String key){
+        return request.getParameter(key) == null ? "" : request.getParameter(key);
+    }
+
+    public static String getParameterNumber(HttpServletRequest request,String key){
+        return request.getParameter(key) == null || request.getParameter(key) == "" ? "-1" : request.getParameter(key);
+    }
 }
