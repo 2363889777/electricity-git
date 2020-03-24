@@ -18,11 +18,11 @@
 
     //所有的数据测试
     $('#add-good-list-page-sn [name="add-good-commit-button"]').on("click",function () {
-        // 获取所有的文件上传 可以循环遍历
-        var file = $("#import_file")[0].files[0];
-        // 创建form对象
-        var form1=document.querySelector("#all-message-form");
-        var form = new FormData(form1);
+        // 获取所有的文件上传 可以循环遍历(不需要)
+        let file = $("#import_file")[0].files[0];
+        // 创建form对象（通过该方式 直接获取 表单内容 包括文件上传）
+        let form1=document.querySelector("#all-message-form");
+        let form = new FormData(form1);
         // form.append('myfile', file);
         $.ajax({
             type: 'POST',
@@ -31,8 +31,9 @@
             processData: false,  // 告诉jquery不转换数据
             contentType: false,  // 告诉jquery不设置内容格式
             success: function (arg) {
-                console.log(arg);
                 alert(arg);
+                //重置表单
+                form1.reset();
             }
         })
     })

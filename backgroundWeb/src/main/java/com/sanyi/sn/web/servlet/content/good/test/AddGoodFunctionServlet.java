@@ -108,6 +108,12 @@ public class AddGoodFunctionServlet extends HttpServlet {
         }
     }
 
+    /**
+     * 最终使用的 表单处理
+     * @param request
+     * @param resp
+     * @throws IOException
+     */
     private void formTest(HttpServletRequest request, HttpServletResponse resp) throws IOException {
         DiskFileItemFactory factory = new DiskFileItemFactory();
         //2、创建一个文件上传解析器
@@ -194,6 +200,14 @@ public class AddGoodFunctionServlet extends HttpServlet {
         }
 
     }
+
+    /**
+     *  添加数据库表单
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     private void addDate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1. 获取需求数据
         int parentId = Integer.parseInt(RequestUtils.getParameterNumber(req, "goodClassify"));
