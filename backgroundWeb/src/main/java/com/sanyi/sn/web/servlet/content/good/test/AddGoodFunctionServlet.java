@@ -154,6 +154,10 @@ public class AddGoodFunctionServlet extends HttpServlet {
                 return;
             }
         }
+        for (String value:pList
+        ) {
+            System.out.println("属性值："+value);
+        }
         String goodName = pList.get(0);
         int parentId = Integer.parseInt(pList.get(1));
         String goodColor = pList.get(2);
