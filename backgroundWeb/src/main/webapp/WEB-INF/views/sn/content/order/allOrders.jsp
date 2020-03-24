@@ -15,7 +15,7 @@
 <body>
 <div id="pageContent-sn">
 
-    <div class="container-fluid bg-white order-sn">
+    <div class="container-fluid bg-white order-sn" id="order-page-sn">
         <%--头部页面标题--%>
         <div class="row pl-4 pr-4 pt-4">
             <div class="pageContent-title-sn">
@@ -163,7 +163,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="btn-outline-success btn p-1" style="font-size: 13px" data-order="${order.orderNumber}">订单详情</button>
+                                    <button name="detailed-order-button" class="btn-outline-success btn p-1" style="font-size: 13px" data-order="${order.orderNumber}">订单详情</button>
                                 </td>
                             </tr>
                         </c:forEach>

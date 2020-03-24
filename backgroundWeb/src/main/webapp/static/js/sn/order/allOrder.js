@@ -8,6 +8,11 @@
             $.getScript("/static/js/sn/order/batchSendGoods-allOrder.js");
         });
     });
+    $('#order-page-sn [name="detailed-order-button"]').on("click",function () {
+        $('#web-page-main-body').load(address+'/pageContent/order/message #pageContent-sn',function () {
+            $.getScript("/static/js/sn/order/batchSendGoods-allOrder.js");
+        });
+    })
     /****时间组件相关设置
      *******************************************/
     $('#start-date').datetimepicker({
