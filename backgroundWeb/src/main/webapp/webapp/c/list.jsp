@@ -28,7 +28,7 @@
     </div>
     <div class="form-row">
         <div class="form-group col">
-            <button type="button" class="btn btn-success"><a href="commodity_add_c.jsp">新增</a></button>
+            <button type="button" class="btn btn-success text-white">新增</button>
         </div>
         <div class="form-group col">
             <label for="sel1"></label>
@@ -59,7 +59,6 @@
             <th>商品名称</th>
             <th>商品分类</th>
             <th>实际销量</th>
-            <th>商品排序</th>
             <th>商品状态</th>
             <th>添加时间</th>
             <th>操作</th>
@@ -72,12 +71,57 @@
             <td>Apple iPhone X移动联通4G手机</td>
             <td>Iphone</td>
             <td>10</td>
-            <td>20</td>
             <td>
-                <button>上架</button>
-                <button>热销</button>
-                <button>推荐</button>
-                <button>下架</button>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="good-is-putAway-sn">
+                    <label class="custom-control-label" for="good-is-putAway-sn">上架</label>
+                </div>
+
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="good-recommend-sn">
+                    <label class="custom-control-label" for="good-recommend-sn">推荐</label>
+                </div>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="good-hot-sn">
+                    <label class="custom-control-label" for="good-hot-sn">热销</label>
+                </div>
+
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="good-seasonal-sn">
+                    <label class="custom-control-label" for="good-seasonal-sn">应季</label>
+                </div>
+            </td>
+            <td>2018-06-25 19:32:28</td>
+            <td>
+                <button type="button" class="btn btn-primary">编辑</button>
+                <button type="button" class="btn btn-primary">删除</button>
+            </td>
+        </tr>
+        <tr>
+            <td>10001</td>
+            <td></td>
+            <td>Apple iPhone X移动联通4G手机</td>
+            <td>Iphone</td>
+            <td>10</td>
+            <td>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="good-is-putAway-sn1">
+                    <label class="custom-control-label" for="good-is-putAway-sn1">上架</label>
+                </div>
+
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="good-recommend-sn1">
+                    <label class="custom-control-label" for="good-recommend-sn1">推荐</label>
+                </div>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="good-hot-sn1">
+                    <label class="custom-control-label" for="good-hot-sn1">热销</label>
+                </div>
+
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="good-seasonal-sn1">
+                    <label class="custom-control-label" for="good-seasonal-sn1">应季</label>
+                </div>
             </td>
             <td>2018-06-25 19:32:28</td>
             <td>

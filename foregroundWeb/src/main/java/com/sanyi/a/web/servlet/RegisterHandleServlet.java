@@ -19,7 +19,7 @@ import java.io.IOException;
  * @版本 1.0.0
  * @版权 老九学堂
  */
-@WebServlet("registerHandle")
+@WebServlet("/registerHandle")
 public class RegisterHandleServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

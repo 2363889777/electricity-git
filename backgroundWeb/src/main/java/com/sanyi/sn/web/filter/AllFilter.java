@@ -15,7 +15,7 @@ import java.io.IOException;
  * @copy 老九学堂
  */
 
-@WebFilter("/sn/*")
+@WebFilter(urlPatterns = {"/sn/*","/pageContent/*"})
 public class AllFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -36,6 +36,7 @@ public class AllFilter implements Filter {
 
     @Override
     public void destroy() {
-
+        //        //关闭连接
+        SqlSessionFactoryUits.closeCurrentSession();
     }
 }

@@ -1,0 +1,59 @@
+/**** 添加商品列表样式
+ *******************************************/
+#add-good-list-page-sn .headline {
+    width: 100%;
+    padding: 12px 20px;
+    border-bottom: 1px solid #eef1f5;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#add-good-list-page-sn .mess {
+    position: absolute;
+    width: 4px;
+    height: 14px;
+    background: #00aeff;
+    top: 6px;
+    left: -12px;
+}
+
+
+#add-good-list-page-sn .des {
+    margin: 0;
+    padding-top: .8rem;
+    color: #656565;
+    font-weight: inherit;
+    text-align: left;
+}
+
+#add-good-list-page-sn .am-form-group {
+    margin-bottom: 1.5rem;
+}
+
+#add-good-list-page-sn .tpl-form-input {
+    display: block;
+    width: 100%;
+    padding: 6px 5px;
+    line-height: 1.42857;
+    border: 0;
+    border-bottom: 1px solid #c2cad8;
+    color: #555;
+    box-shadow: none;
+    font-size: 14px;
+}
+
+#add-good-list-page-sn .am-btn-secondary {
+    color: #fff;
+    background-color: #3bb4f2;
+    border-color: #3bb4f2;
+    display: inline-block;
+    padding: .5em 1em;
+    line-height: 1.2;
+}
+
+#add-good-list-page-sn .spa {
+    color: #f00;
+    line-height: 18px;
+}
+
+
