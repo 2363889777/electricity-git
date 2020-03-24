@@ -88,11 +88,11 @@
                             <label class="des">商品规格 <span class="spa">*</span></label>
                             <div class="container" style="margin-left: 120px;margin-top: -23px">
                                 <label style="margin-right: 30px;padding-top: 0px;">
-                                    <input type="radio" name="specification">
+                                    <input type="radio">
                                     <span>单规格</span>
                                 </label>
                                 <label>
-                                    <input type="radio" name="specification">
+                                    <input type="radio">
                                     <span>多规格</span>
                                 </label>
                             </div>
