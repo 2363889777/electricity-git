@@ -34,7 +34,6 @@ public class GoodListServlet extends HttpServlet {
         GoodService goodService = GoodServiceImpl.newObj();
         //获取当前页数
         int page = Integer.parseInt(RequestUtils.getParameter(req,"pageIndex","0"));
-        System.out.println("显示页数："+page);
         int pageContent = 5;
         int startNum = page*pageContent;
         List<GoodVo> goodVoList = goodService.getGoods(startNum,pageContent);
