@@ -130,7 +130,8 @@
                                                    id="good-seasonal-sn-good${good.goodId}" data-good="${good.goodId}">
                                         </c:when>
                                         <c:otherwise><input type="checkbox" class="custom-control-input"
-                                                            id="good-seasonal-sn-good${good.goodId}" data-good="${good.goodId}"></c:otherwise>
+                                                            id="good-seasonal-sn-good${good.goodId}"
+                                                            data-good="${good.goodId}"></c:otherwise>
                                     </c:choose>
                                     <label class="custom-control-label"
                                            for="good-seasonal-sn-good${good.goodId}">应季</label>
@@ -144,6 +145,74 @@
                         </tr>
                     </c:forEach>
                     </tbody>
+                    <tfoot>
+                    <div class="row">
+                        <div class="col">
+                            <%--分页条--%>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <c:choose>
+                                        <c:when test="${requestScope.activePage eq 0}">
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#" aria-label="Previous"
+                                                   data-pageIndex="${requestScope.activePage}">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                            </li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#" aria-label="Previous"
+                                                   data-pageIndex="${requestScope.activePage}">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                            </li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <c:forEach begin="1" end="${requestScope.pageCount}" step="1" varStatus="page">
+                                        <c:choose>
+                                            <c:when test="${requestScope.activePage+1 eq page.index}">
+                                                <li class="page-item active"><a class="page-link" href="#"
+                                                                                data-pageIndex="${page.index}">${page.index}</a>
+                                                </li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li class="page-item"><a class="page-link" href="#"
+                                                                         data-pageIndex="${page.index}">${page.index}</a>
+                                                </li>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+
+                                    <c:choose>
+                                        <c:when test="${requestScope.pageCount-1 eq requestScope.activePage}">
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#" aria-label="Next"
+                                                   data-pageIndex="${requestScope.activePage+2}">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li class="page-item">
+                                                <a class="page-link disabled" href="#" aria-label="Next"
+                                                   data-pageIndex="${requestScope.activePage+2}">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </li>
+                                        </c:otherwise>
+                                    </c:choose>
+
+
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    </tfoot>
                 </table>
             </div>
         </div>

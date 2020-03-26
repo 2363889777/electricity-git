@@ -127,7 +127,7 @@ public interface GoodDao {
     /**
      * 根据输入的 开始行和结束行 返回 相应的 简易商品展示数据
      * @param startNum 开始行
-     * @param endNum 结束行
+     * @param count 条数
      * @return 简易商品展示数据
      */
     @SQL(value = "select\n" +
@@ -142,8 +142,8 @@ public interface GoodDao {
             "inner join good_is_putaway_table gipt on gipt.pk_good_is_putaway_id = g.pk_good_is_putaway_id\n" +
             "where git.pk_good_type_id = \n" +
             "(select pk_good_type_id from good_img_type where good_img_type_name = '商品标题链接图片')\n" +
-            "limit #{startNum},#{endNum};",resultType = GoodVo.class,type = SqlType.SELECT)
-    List<GoodVo> getSimpleGoodVos(@Param("startNum") int startNum,@Param("endNum") int endNum);
+            "limit #{startNum},#{count};",resultType = GoodVo.class,type = SqlType.SELECT)
+    List<GoodVo> getSimpleGoodVos(@Param("startNum") int startNum,@Param("count") int count);
 
     /**
      * 获取最近影响的行数
@@ -220,4 +220,20 @@ public interface GoodDao {
      */
     @SQL(value = "select pk_good_id from good where good_name = #{goodName};",resultType = Long.class,type = SqlType.SELECT)
     Long getGoodId(@Param("goodName") String goodName);
+
+
+    /**
+     * 查询所有的商品数量
+     * @return 所有的商品总数
+     */
+    @SQL(value = "select\n" +
+            "count(*)\n" +
+            "from good g\n" +
+            "inner join good_img gi on gi.pk_good_id = g.pk_good_id\n" +
+            "inner join good_img_type git on git.pk_good_type_id = gi.pk_good_type_id\n" +
+            "inner join good_classify gc on gc.pk_good_classify_id = g.pk_good_classify_id\n" +
+            "inner join good_is_putaway_table gipt on gipt.pk_good_is_putaway_id = g.pk_good_is_putaway_id\n" +
+            "where git.pk_good_type_id = \n" +
+            "(select pk_good_type_id from good_img_type where good_img_type_name = '商品标题链接图片')",resultType = Long.class,type = SqlType.SELECT)
+    Long getGoodCount();
 }

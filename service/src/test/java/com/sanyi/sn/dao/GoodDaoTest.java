@@ -26,6 +26,11 @@ public class GoodDaoTest {
     }
 
     @Test
+    public void getGoodCount() {
+        System.out.println(goodDao.getGoodCount());
+    }
+
+    @Test
     public void insertGoodClassify() {
         System.out.println(goodDao.insertGoodClassify("男装",0));
         SqlSessionFactoryUits.commit();

@@ -21,6 +21,13 @@ public class GoodServiceImpl implements GoodService {
 
     private final GoodDao GOOD_DAO = SqlSessionFactoryUits.getCurrentSqlSession().getMapper(GoodDao.class);
 
+    public int getGoodCount() {
+        if(GOOD_DAO.getGoodCount()==null){
+            return 0;
+        }
+        return Integer.parseInt(GOOD_DAO.getGoodCount().toString());
+    }
+
     private GoodServiceImpl() {
     }
 

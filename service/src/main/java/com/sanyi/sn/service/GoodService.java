@@ -75,6 +75,12 @@ public interface GoodService {
     );
 
     /**
+     * 返回商品总数
+     * @return 商品总数
+     */
+    int getGoodCount();
+
+    /**
      * 获取所有的商品数据
      * @param startNum 开始行
      * @param endNum 结束行

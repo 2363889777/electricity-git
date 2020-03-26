@@ -2,6 +2,7 @@ package com.sanyi.sn.web.servlet.content.good;
 
 import com.sanyi.sn.service.GoodService;
 import com.sanyi.sn.service.impl.GoodServiceImpl;
+import com.sanyi.sn.util.RequestUtils;
 import com.sanyi.sn.vo.good.GoodVo;
 
 import javax.servlet.ServletException;
@@ -31,10 +32,20 @@ public class GoodListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //获取商品数据
         GoodService goodService = GoodServiceImpl.newObj();
-        List<GoodVo> goodVoList = goodService.getGoods(0,20);
-        System.out.println(goodVoList);
+        //获取当前页数
+        int page = Integer.parseInt(RequestUtils.getParameter(req,"pageIndex","0"));
+        System.out.println("显示页数："+page);
+        int pageContent = 5;
+        int startNum = page*pageContent;
+        List<GoodVo> goodVoList = goodService.getGoods(startNum,pageContent);
+        //获取所有的搜索条数
+        double allGoodCount = goodService.getGoodCount();
+        //计算一共的页数
+        double pageCount = Math.ceil(allGoodCount/pageContent);
         //设置进req
+        req.setAttribute("activePage",page);
         req.setAttribute("goods",goodVoList);
+        req.setAttribute("pageCount",pageCount);
         req.getRequestDispatcher("/WEB-INF/views/sn/content/good/goodList.jsp").forward(req, resp);
     }
 }

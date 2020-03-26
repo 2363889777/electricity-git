@@ -25,4 +25,17 @@
             }
         })
     })
+
+    // 分页按钮
+    $('#good-list-page-sn .page-link').on("click",function () {
+        //发送页面请求
+        let page = $(this).attr("data-pageIndex");
+        alert(page);
+        //发送请求
+        $('#web-page-main-body').load(address+'/pageContent/good/goodList #pageContent-sn',{pageIndex:page-1},function () {
+            $.getScript("/static/js/sn/good/goodList.js");
+        });
+
+    })
+
 }();
